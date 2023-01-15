@@ -489,7 +489,7 @@ filename "p5/p5.lyx"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintAll"
-bibfiles "bib/main"
+bibfiles "bib/main,bib/misc"
 
 \end_inset
 
