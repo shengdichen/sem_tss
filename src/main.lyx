@@ -235,17 +235,17 @@ This thesis explores the correlation between various configurations of the
 \end_layout
 
 \begin_layout Abstract
-This project, conducted under the supervision of Prof.
+This project, conducted with Prof.
  Dr.
  J.
- Buhmann and I.
- Ovinnikov, is executed within the framework of a Semester-Thesis under
- the catalogue identifier 
+ Buhmann as supervisor and I.
+ Ovinnikov as advisor, is executed within the framework of a Semester-Thesis
+ under the catalogue identifier 
 \begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
-401-3990-18L
+401-3740-01L
 \end_layout
 
 \end_inset
@@ -292,12 +292,12 @@ status open
 \end_layout
 
 \begin_layout Center Header
-A Study of Primal Wasserstein Imitation-Learning 
+A Practical Study of Primal Wasserstein Imitation-Learning 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-A Study of Primal Wasserstein Imitation-Learning
+A Practical Study of Primal Wasserstein Imitation-Learning
 \end_layout
 
 \end_inset
@@ -406,7 +406,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Part
-Prelude
+Preliminaries
 \end_layout
 
 \begin_layout Standard
@@ -420,6 +420,36 @@ filename "p1/p1.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Definition
+Part 1
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Related research
+\end_layout
+
+\begin_layout Enumerate
+Technical details
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -427,7 +457,7 @@ filename "p1/p1.lyx"
 \end_layout
 
 \begin_layout Part
-Warm-Up
+PWIL Fundamentals
 \end_layout
 
 \begin_layout Standard
@@ -441,6 +471,36 @@ filename "p2/p2.lyx"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Definition
+Part 2
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The big formulae
+\end_layout
+
+\begin_layout Enumerate
+Technical details
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -448,7 +508,7 @@ filename "p2/p2.lyx"
 \end_layout
 
 \begin_layout Part
-More Stuff
+Configurations
 \end_layout
 
 \begin_layout Standard
@@ -459,6 +519,49 @@ filename "p3/p3.lyx"
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Definition
+Part 3
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Expert
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Training
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+PWIL
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+demo
+\end_layout
+
+\begin_layout Enumerate
+train
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -469,13 +572,81 @@ filename "p3/p3.lyx"
 \end_layout
 
 \begin_layout Part
-The Closing
+Evaluation and Comparison
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
 filename "p4/p4.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Definition
+Part 3
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Testing environment
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+setup: agent in 2D space; goal: find the 2 targets
+\end_layout
+
+\begin_layout Enumerate
+reward: negative, L2 distance to (current) target
+\end_layout
+
+\begin_layout Enumerate
+timer: expires after 100 steps
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Metrics
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+trajectory
+\end_layout
+
+\begin_layout Enumerate
+stats, plots
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+PWIL
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+pwil VS pwil
+\end_layout
+
+\begin_layout Enumerate
+pwil VS expert (when do we recover expert)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -498,6 +669,41 @@ Epilogue
 LatexCommand input
 filename "p5/p5.lyx"
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Definition
+Part 5
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Future work:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+more environments with this framework (cartpole)
+\end_layout
+
+\begin_layout Enumerate
+further testing of PWIL
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+with IRL (AIRL)
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
 \end_inset
 
 

@@ -115,11 +115,459 @@ todonotes
 \begin_body
 
 \begin_layout Section
-Sample Section
+Synopsis
+\end_layout
+
+\begin_layout Subsection
+Related Researches
+\end_layout
+
+\begin_layout Subsubsection
+On Wasserstein Imitation-Learning
+\end_layout
+
+\begin_layout Subsubsection
+On other Learning methodologies
+\end_layout
+
+\begin_layout Section
+Technicalities
 \end_layout
 
 \begin_layout Standard
-Here is some sample text.
+A summary of the technical details of this thesis is presented as follows.
+\end_layout
+
+\begin_layout Subsection
+Programming
+\end_layout
+
+\begin_layout Standard
+The main source-code package is contained in one monolithic repository,
+ which includes 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+, as hinted at previously, 
+\end_layout
+
+\end_inset
+
+ the sample environment, the 
+\end_layout
+
+\begin_layout Subsubsection
+General usages
+\end_layout
+
+\begin_layout Standard
+The programming is performed with the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Python
+\end_layout
+
+\end_inset
+
+ language.
+ Despite the dynamic-typing nature of the language, the source-code utilizes
+ extensive type-hinting.
+ Python versions no earlier than 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Python 3.9
+\end_layout
+
+\end_inset
+
+ is required
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Version requirement of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Python
+\end_layout
+
+\end_inset
+
+'s 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+typing
+\end_layout
+
+\end_inset
+
+-Module: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://docs.python.org/3/library/typing.html#module-contents"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The source-code is consistently processed by the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+black
+\end_layout
+
+\end_inset
+
+-formatter 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "black"
+literal "false"
+
+\end_inset
+
+ and thus implicitly conforms to the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PEP8
+\end_layout
+
+\end_inset
+
+ standard.
+\end_layout
+
+\begin_layout Subsubsection
+Required packages
+\end_layout
+
+\begin_layout Standard
+The framework for the agent-interactive environment is provided by the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+gym
+\end_layout
+
+\end_inset
+
+-package developed by OpenAI 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gym"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The reference-implementations of algorithms of RL, for example, the Deep-Q-Netwo
+rk (DQN) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dqn-nature,DQN-original"
+literal "false"
+
+\end_inset
+
+ and the Proximal-Policy-Optimization (PPO) algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PPO"
+literal "false"
+
+\end_inset
+
+, are provided by stable-baselines3 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sb3"
+literal "false"
+
+\end_inset
+
+, referred to as 
+\begin_inset Quotes xld
+\end_inset
+
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+SB3
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes xrd
+\end_inset
+
+ in this thesis.
+\end_layout
+
+\begin_layout Standard
+Note that both 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+gym
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+SB3
+\end_layout
+
+\end_inset
+
+ enforce project-wide type-hinting of source-code in 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Python
+\end_layout
+
+\end_inset
+
+ as well.
+\end_layout
+
+\begin_layout Subsection
+Formatting and Typesetting
+\end_layout
+
+\begin_layout Standard
+This paper is compiled by the Lua\SpecialChar TeX
+ typesetting-engine featuring the open-source
+ font-packages of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Libertinus
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Source-Code-Pro
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Tracking
+\end_layout
+
+\begin_layout Standard
+The source-code of the 
+\begin_inset Flex Noun
+status open
+
+\begin_layout Plain Layout
+Shetris
+\end_layout
+
+\end_inset
+
+-Project is distributed under the following repositories:
+\end_layout
+
+\begin_layout Itemize
+The modules for the formulation of various agents, as well as those for
+ training and testing are published under the repository: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link to GitHub"
+target "https://github.com/shengdichen/shetris-train"
+literal "false"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+All other aspects of the Tetris-game, including the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+engine
+\end_layout
+
+\end_inset
+
+ as described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Essential-Implementations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, are found at: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link to GitHub"
+target "https://github.com/shengdichen/shetris-game"
+literal "false"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+This thesis-document itself is accessible under: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Link to GitHub"
+target "https://github.com/shengdichen/shetris-tss"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Both source-code repositories deploy the 
+\begin_inset Quotes xld
+\end_inset
+
+GNU Affero General Public License v3.0
+\begin_inset Quotes xrd
+\end_inset
+
+ license, else known as 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+GNU AGPLv3
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Subsubsection
+Tracking and Control
+\end_layout
+
+\begin_layout Plain Layout
+This particular thesis documents the conception, the implementation and
+ the results achieved in The entire project consists of two fundamental
+ parts: t
+\end_layout
+
+\begin_layout Plain Layout
+The Shetris-Project is under extensive version control by 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+git
+\end_layout
+
+\end_inset
+
+: three lower-level repositories are created: the first documents the 
+\begin_inset Quotes xld
+\end_inset
+
+engine
+\begin_inset Quotes xrd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This thesis documents the results obtained until version 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+V?
+\end_layout
+
+\end_inset
+
+, marked with the signed 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+git-tag
+\end_layout
+
+\end_inset
+
+ of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+#tag-number
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
