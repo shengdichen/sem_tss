@@ -115,11 +115,1720 @@ todonotes
 \begin_body
 
 \begin_layout Section
-Sample Section
+The environment
 \end_layout
 
 \begin_layout Standard
-Here is some sample text.
+A separate testing-environment is implemented where the agent is required
+ to navigate from its starting position within a two-dimensional plane to
+ reach target(s) unknown to the agent itself.
+ This section introduces the 
+\begin_inset Quotes xld
+\end_inset
+
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes xrd
+\end_inset
+
+ environment and discusses its configuration options for the purpose of
+ studying the PW-IL algorithm.
+\end_layout
+
+\begin_layout Subsection
+The agent and the targets
+\end_layout
+
+\begin_layout Standard
+The two-dimensional space containing the agent and the target(s) is referred
+ to as the 
+\begin_inset Quotes xld
+\end_inset
+
+board
+\begin_inset Quotes xrd
+\end_inset
+
+.
+ Without loss of generality, its size is chosen as 
+\begin_inset Formula $200\times200$
+\end_inset
+
+ and internally represented by an 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+np.ndarray
+\end_layout
+
+\end_inset
+
+ of the same shape.
+\end_layout
+
+\begin_layout Standard
+For this thesis, the starting position of the agent is fixed at 
+\begin_inset Formula $\left(10,10\right)$
+\end_inset
+
+.
+ Random initialization, readily configurable through a boolean-flag, is
+ left for future work.
+\end_layout
+
+\begin_layout Standard
+In this study, two targets non-random positions are used, with the first
+ located at the board center and the second at the 
+\begin_inset Formula $\left(190,190\right)$
+\end_inset
+
+.
+ The ideal path traverses thus diagonally across the board from the lower,
+ left corner to first reach the middle of the middle, followed by moving
+ towards second target in the upper, right corner.
+\end_layout
+
+\begin_layout Subsubsection
+Reward and Termination
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Reward-and-Termination"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The reward at time-step 
+\begin_inset Formula $t$
+\end_inset
+
+ at is calculated as the negative 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ distance between the agent's position and that of the current target:
+\begin_inset Formula 
+\[
+\text{reward}^{\texttt{PointNav}}\coloneqq-\left(\left(x_{t}^{\text{agent}}-x^{\text{curr-target}}\right)^{2}+\left(y_{t}^{\text{agent}}-y^{\text{curr-target}}\right)^{2}\right)^{\nicefrac{1}{2}}
+\]
+
+\end_inset
+
+Implicitly, the reward-value is non-negative, with higher values indicating
+ better performance.
+\end_layout
+
+\begin_layout Standard
+An episode is terminated if both targets have been found or if the internal
+ timer of 
+\begin_inset Formula $1000$
+\end_inset
+
+ time-steps has elapsed.
+ Justification for this specific choice of setting the maximal episode-length
+ to 
+\begin_inset Formula $1000$
+\end_inset
+
+ time-steps is provided below in Section 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+c-ref
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The variants
+\end_layout
+
+\begin_layout Subsubsection
+Shifts
+\end_layout
+
+\begin_layout Standard
+For controlled modifications of the environment 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+, the first target is shifted off-center.
+ In this project, two such variations are made.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:pointnav-variation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ documents the three variations with the original version without shifts
+ of the first target.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: add a pic of env
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="7">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Variant
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+-ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Shift of First Target
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Position of First Target
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color green
+Default
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(0;\:0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(100;\:100\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\color blue
+Variation-1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(0;\:+50\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(100;\:150\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\color blue
+Variation-2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(+50;\:0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(150;\:100\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:pointnav-variation"
+
+\end_inset
+
+The three different 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Note that the default variant (marked green) without shifting the first
+ target is the (only) environment in which that the PW-IL algorithm is trained
+ on and evaluated against.
+ One also observes that Variation-1 and Variation-2 (marked blue) demonstrate
+ symmetry with respect to the shifts.
+\end_layout
+
+\begin_layout Subsubsection
+Action-Continuity
+\end_layout
+
+\begin_layout Standard
+Two modes of continuity for action-input are available to agents interacting
+ with 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+: the discrete and the continuous action-space.
+ In the discrete mode, 
+\begin_inset Formula $5$
+\end_inset
+
+ possible actions are available to the agent, which are mapped to two-dimensiona
+l movement-inputs as follows:
+\begin_inset Formula 
+\[
+A^{\text{discrete}}\coloneqq\left[\begin{gathered}\texttt{gym.spaces.Discrete(5)}\\
+\triangleq\left[\begin{alignedat}{3}0 & 1 & 2 & 3 & 4\end{alignedat}
+\right]^{\intercal}
+\end{gathered}
+\right]\longrightarrow\left[\begin{alignedat}{1}\left(0;+2\right)\\
+\left(0;-2\right)\\
+\left(+2;0\right)\\
+\left(-2;0\right)\\
+\left(0;0\right)
+\end{alignedat}
+\right]
+\]
+
+\end_inset
+
+For the continuous variant, the action-space spans the range of 
+\begin_inset Formula $\left[-2.5;+2.5\right]$
+\end_inset
+
+ for both dimensions.
+ The 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ inputs are then rounded (towards 
+\begin_inset Formula $0$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+rounding performed with 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+np.round()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+) before applying to the agent's position.
+\begin_inset Formula 
+\[
+A^{\text{cont}}\coloneqq\left[\begin{alignedat}{1}\texttt{gym.spaces.Box(-2.5, +2.5)}\\
+\texttt{gym.spaces.Box(-2.5, +2.5)}
+\end{alignedat}
+\right]\longrightarrow\texttt{np.round(}\star\texttt{)}
+\]
+
+\end_inset
+
+The range is chosen such that the final, rounded action applied to 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ is uniformly distributed among 
+\begin_inset Formula $\left\{ -2,-1,0,+1,+2\right\} $
+\end_inset
+
+ for the random agent.
+\end_layout
+
+\begin_layout Note
+Episode-Length
+\begin_inset CommandInset label
+LatexCommand label
+name "note:Episode-Length-of-PointNav"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Given the maximal (absolute) displacement of 
+\begin_inset Formula $2$
+\end_inset
+
+ in one direction every step and the size of 
+\begin_inset Formula $200\times200$
+\end_inset
+
+ of the board, one readily sees that, for the purpose of navigating along
+ the diagonal of the board, the ideal agent would require 
+\begin_inset Formula $\sim200$
+\end_inset
+
+ steps (
+\begin_inset Formula $\sim100$
+\end_inset
+
+ per dimension) to reach both targets in the discrete 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ environment and 
+\begin_inset Formula $\sim100$
+\end_inset
+
+ steps (movement in both dimensions at the same time) in the continuous
+ version, irrespective of the shift values of the first target.
+\end_layout
+
+\begin_layout Standard
+The episode-length of 
+\begin_inset Formula $1000$
+\end_inset
+
+ time-steps as mentioned in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Reward-and-Termination"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ allows a considerable margin of tolerance for non-optimal behavior while
+ guaranteeing baseline performance, as later discussed in Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Performance-metrics-and-baselines"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Note
+Practical duration of target reaching
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The careful reader would protest that a stricter minimal number-of-steps
+ to retrieve the positions of the targets could be provided.
+ Indeed, as introduced previously, the agent's position is initialized to
+ 
+\begin_inset Formula $\left(10;10\right)$
+\end_inset
+
+ and that of the second agent to 
+\begin_inset Formula $\left(190;190\right)$
+\end_inset
+
+, thus not the full entire diagonal distance need be traversed.
+\end_layout
+
+\begin_layout Standard
+Also, for the purpose of visualization, the implementation of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ attaches an icon-image to the agent and the targets.
+ The target-reaching criteria is such that the overlapping of the outer
+ edge of these images signals attainment of the current target.
+ Effectively, this further reduces the minimal number of steps required
+ to reach the targets.
+\end_layout
+
+\begin_layout Standard
+The interested reader is referred to the source-code repository to inspect
+ the implementation details and work out the actual best-case episode-length.
+ For the sake of providing an estimate for the ideal model and defining
+ the baseline of 
+\begin_inset Formula $1000$
+\end_inset
+
+ steps per episode, the approximation provided in Note 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "note:Episode-Length-of-PointNav"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is sufficient.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+The 
+\begin_inset Formula $6$
+\end_inset
+
+ variants
+\end_layout
+
+\begin_layout Section
+Expert-Demonstration Setup
+\end_layout
+
+\begin_layout Subsection
+The expert-demonstrations
+\end_layout
+
+\begin_layout Standard
+As setup for deploying the PW-IL method, the 
+\begin_inset Quotes xld
+\end_inset
+
+demonstration
+\begin_inset Quotes xrd
+\end_inset
+
+ from the expert-agent must first be generated.
+ This section defines such demonstrations and describe the hyper-parameters
+ available to the process of the generation.
+\end_layout
+
+\begin_layout Definition
+Episode-Trajectories of an agent
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+An 
+\begin_inset Quotes xld
+\end_inset
+
+episode-trajectory
+\begin_inset Quotes xrd
+\end_inset
+
+, or simply 
+\begin_inset Quotes xld
+\end_inset
+
+trajectory
+\begin_inset Quotes xrd
+\end_inset
+
+, is an iterable collection of per-time-step recording of all state-action
+ pairs generated by an agent during one entire episode, where such a state-actio
+n pair 
+\begin_inset Formula $\text{s-a}$
+\end_inset
+
+ is the concatenation of the environments state 
+\begin_inset Formula $s$
+\end_inset
+
+ and the agent's action 
+\begin_inset Formula $a$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\texttt{traj}\coloneqq\left(\texttt{sa}_{1},\text{s-a}_{2},\cdots\text{s-a}_{\text{episode-over}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+, the 
+\begin_inset Quotes xld
+\end_inset
+
+demonstration
+\begin_inset Quotes xrd
+\end_inset
+
+ for PW-IL transports information from expert trajectories.
+\end_layout
+
+\begin_layout Definition
+Demonstration for PW-IL
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For practical implementation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper-code"
+literal "false"
+
+\end_inset
+
+ encodes this as an iterable collection of state-action pairs, as previously
+ seen in the definition of the episode-trajectories.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above definition hints at the usage of multiple expert-trajectories
+ to generate PW-IL's demonstration.
+ Indeed, the number of trajectories forming the pool for the demonstration
+ constitutes a configurable hyper-parameter 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+.
+ Inspired by the choice of 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $10$
+\end_inset
+
+ as values of 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ in the original paper of PW-IL 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+, this thesis expands upon this with the addition of an intermediate value
+ 
+\begin_inset Formula $5$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+h^{\text{\#-traj}}\in\left\{ 1,5,10\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For each of these trajectories, sub-sampling at frequency 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+ is performed by selecting state-action pairs once every certain number
+ of time-steps.
+ Assume thus that within a selected episode-trajectory, the state-action
+ pair at the 
+\begin_inset Formula $k^{\text{th}}$
+\end_inset
+
+ time-step is chosen, the next state-action to pick is the one at the 
+\begin_inset Formula $\left(k+h^{\text{s-smp}}\right)^{\text{th}}$
+\end_inset
+
+ time-step.
+\end_layout
+
+\begin_layout Standard
+While the original thesis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ uses the uniform sub-sampling frequency of 
+\begin_inset Formula $20$
+\end_inset
+
+ to simulate data scarcity, this study deploys the following value-range
+\begin_inset Formula 
+\[
+h^{\text{s-smp}}\in\left\{ 1,2,5,10,20\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The sub-sampled state-action pairs of all 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ are finally concatenated to form the demonstration as input for executing
+ the PW-IL algorithm.
+\end_layout
+
+\begin_layout Subsection
+The source
+\end_layout
+
+\begin_layout Standard
+Besides the number of trajectories 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ and the sub-sampling frequency 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+, the quality of the demonstration itself is configurable, as also studied
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "extrapolate-suboptimal,learning-learner"
+literal "false"
+
+\end_inset
+
+.
+ In this thesis, the quality of the expert-demonstration is controlled by
+ adding experts to the trajectory pool trained on 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+variations
+\end_layout
+
+\end_inset
+
+ of the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+.
+ Allowing the presence of such variation trajectories in the pool constitutes
+ the non-optimal demonstration quality.
+ One further distinguishes between the 
+\begin_inset Quotes xld
+\end_inset
+
+mixed
+\begin_inset Quotes xrd
+\end_inset
+
+ pool, where expert-trajectory on the default, non-shifted variation-0 is
+ included and the 
+\begin_inset Quotes xld
+\end_inset
+
+distant
+\begin_inset Quotes xrd
+\end_inset
+
+ pool, where only the shifted variations are taken into consideration.
+\end_layout
+
+\begin_layout Standard
+By subsequently varying the specific constellation within the optimal, the
+ mixed and non-optimal pools, one observes the 
+\begin_inset Formula $7$
+\end_inset
+
+ demonstration-sources, identified with the hyper-parameter 
+\begin_inset Formula $h^{\text{id}}$
+\end_inset
+
+ of integer-values 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $6$
+\end_inset
+
+ defined in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:seven-demo-ids"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="6">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Demo-ID 
+\begin_inset Formula $h^{\text{id}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Traj-Pool of Experts ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Demo-Quality
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 0\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+optimal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+non-optimal: Mixed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 0,2\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 0,1,2\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 1\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+non-optimal: distant
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 2\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 1,2\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:seven-demo-ids"
+
+\end_inset
+
+Time-stamps of key activities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Summary of hyper-parameters
+\end_layout
+
+\begin_layout Conclusion
+Configuration-Space of PW-IL
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+To conclude this chapter, the three configurable hyper-parameters of PW-IL
+ as discussed above are presented as follows:
+\begin_inset Formula 
+\begin{align*}
+h^{\texttt{PW-IL}} & \coloneqq\left[\begin{alignedat}{1} & h^{\text{id}}\\
+ & h^{\text{\#-traj}}\\
+ & h^{\text{s-smp}}
+\end{alignedat}
+\right]\in\left[\begin{alignedat}{1} & \left\{ 0,1,\cdots,6\right\} \\
+ & \left\{ 1,5,10\right\} \\
+ & \left\{ 1,2,5,10,20\right\} 
+\end{alignedat}
+\right]
+\end{align*}
+
+\end_inset
+
+With the distinct and continuous variants of the action-space, a total of
+ 
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}2\times\left|h\right| & \coloneqq2\times\left(\left|h^{\text{source}}\right|\times\left|h^{\text{\#-traj}}\right|\times h^{\text{s-smp}}\right)\\
+ & \coloneqq2\times\left(7\times3\times5\right)\\
+ & \equiv210
+\end{alignedat}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The upcoming sections analyze the performance of the PW-IL algorithm under
+ varying configurations of the 
 \end_layout
 
 \end_body

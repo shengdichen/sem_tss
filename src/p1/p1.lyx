@@ -115,27 +115,88 @@ todonotes
 \begin_body
 
 \begin_layout Section
+Quick-Start
+\end_layout
+
+\begin_layout Subsection
 Synopsis
+\end_layout
+
+\begin_layout Standard
+This thesis applies the Primal-Wasserstein Imitation-Learning algorithm
+ as introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ to a testing-framework utilizing a separate testing-environment 
 \end_layout
 
 \begin_layout Subsection
 Related Researches
 \end_layout
 
+\begin_layout Standard
+Key to the Primal-Wasserstein Imitation-Learning is the distance of its
+ namesake, the Wasserstein distance, the 
+\begin_inset Formula $p^{\text{th}}$
+\end_inset
+
+-order generalization of which is studied in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "opt-transport-villani"
+literal "false"
+
+\end_inset
+
+.
+ Generative Adversarial Networks (GANs) utilizing this distance is introduced
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WGAN"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsubsection
-On Wasserstein Imitation-Learning
+On Reinforcement-Learning
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Add sources
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 On other Learning methodologies
 \end_layout
 
-\begin_layout Section
-Technicalities
+\begin_layout Standard
+Behavioral Cloning
 \end_layout
 
 \begin_layout Standard
-A summary of the technical details of this thesis is presented as follows.
+I
+\end_layout
+
+\begin_layout Section
+Technical Details
 \end_layout
 
 \begin_layout Subsection
@@ -143,8 +204,8 @@ Programming
 \end_layout
 
 \begin_layout Standard
-The main source-code package is contained in one monolithic repository,
- which includes 
+The source-code is packaged in one monolithic repository, which includes
+ 
 \begin_inset Note Note
 status open
 
@@ -154,7 +215,7 @@ status open
 
 \end_inset
 
- the sample environment, the 
+ the testing-environment, training and testing modules for expert-
 \end_layout
 
 \begin_layout Subsubsection
@@ -172,9 +233,7 @@ Python
 
 \end_inset
 
- language.
- Despite the dynamic-typing nature of the language, the source-code utilizes
- extensive type-hinting.
+ language with global type-hinting.
  Python versions no earlier than 
 \begin_inset Flex Code
 status open
@@ -285,16 +344,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The reference-implementations of algorithms of RL, for example, the Deep-Q-Netwo
-rk (DQN) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "dqn-nature,DQN-original"
-literal "false"
-
-\end_inset
-
- and the Proximal-Policy-Optimization (PPO) algorithm 
+Implementation of the Proximal-Policy-Optimization (PPO) algorithm 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "PPO"
@@ -302,7 +352,7 @@ literal "false"
 
 \end_inset
 
-, are provided by stable-baselines3 
+ as provided by stable-baselines3 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "sb3"
@@ -310,59 +360,18 @@ literal "false"
 
 \end_inset
 
-, referred to as 
-\begin_inset Quotes xld
-\end_inset
-
-
+ (
 \begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
-SB3
+sb3
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes xrd
-\end_inset
-
- in this thesis.
-\end_layout
-
-\begin_layout Standard
-Note that both 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-gym
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-SB3
-\end_layout
-
-\end_inset
-
- enforce project-wide type-hinting of source-code in 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-Python
-\end_layout
-
-\end_inset
-
- as well.
+), is used as the direct RL algorithms.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -372,7 +381,7 @@ Formatting and Typesetting
 \begin_layout Standard
 This paper is compiled by the Lua\SpecialChar TeX
  typesetting-engine featuring the open-source
- font-packages of 
+ font-packages 
 \begin_inset Flex Code
 status open
 
@@ -396,21 +405,15 @@ Source-Code-Pro
 \end_layout
 
 \begin_layout Subsection
-Tracking
+Version-Tracking
 \end_layout
 
 \begin_layout Standard
-The source-code of the 
-\begin_inset Flex Noun
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-Shetris
-\end_layout
-
-\end_inset
-
--Project is distributed under the following repositories:
+The project source-code is distributed under the following repositories:
 \end_layout
 
 \begin_layout Itemize
@@ -461,11 +464,11 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-This thesis-document itself is accessible under: 
+This thesis-document is accessible under: 
 \begin_inset CommandInset href
 LatexCommand href
 name "Link to GitHub"
-target "https://github.com/shengdichen/shetris-tss"
+target "https://github.com/shengdichen/sem_tss/blob/main/src/main.pdf"
 literal "false"
 
 \end_inset
@@ -473,7 +476,7 @@ literal "false"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Both source-code repositories deploy the 
 \begin_inset Quotes xld
 \end_inset
@@ -495,43 +498,12 @@ GNU AGPLv3
 .
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Subsubsection
-Tracking and Control
-\end_layout
-
-\begin_layout Plain Layout
-This particular thesis documents the conception, the implementation and
- the results achieved in The entire project consists of two fundamental
- parts: t
-\end_layout
-
-\begin_layout Plain Layout
-The Shetris-Project is under extensive version control by 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-git
-\end_layout
-
-\end_inset
-
-: three lower-level repositories are created: the first documents the 
-\begin_inset Quotes xld
-\end_inset
-
-engine
-\begin_inset Quotes xrd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 This thesis documents the results obtained until version 
 \begin_inset Flex Code
 status open
@@ -563,11 +535,6 @@ status open
 \end_inset
 
 .
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body

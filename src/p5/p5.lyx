@@ -136,8 +136,25 @@ literal "false"
 
 \end_inset
 
- under varying conditions of To this end, a testing-framework targeted at
- varying three essential configurations is created.
+ under varying conditions of:
+\end_layout
+
+\begin_layout Enumerate
+Quality of demonstrations by expert;
+\end_layout
+
+\begin_layout Enumerate
+Number of demonstrations available to the algorithm
+\end_layout
+
+\begin_layout Enumerate
+Sample scarcity with sub-sampling frequency
+\end_layout
+
+\begin_layout Plain Layout
+To this end, a testing-framework targeted at varying these essential configurati
+ons is created.
+ A 
 \end_layout
 
 \end_inset
@@ -417,12 +434,105 @@ Time-stamps of key activities
 
 \end_layout
 
+\begin_layout Subsection
+Future work
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Definition
+Part 5
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Future work:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+more environments with this framework (cartpole)
+\end_layout
+
+\begin_layout Enumerate
+further testing of PWIL
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+with IRL (AIRL)
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Acknowledgements
 \end_layout
 
 \begin_layout Standard
-To the supervisor of this thesis, 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+To the supervisor of this thesis, Prof.
+ Dr.
+ J.
+ Buhmann: my deepest appreciation for the acceptance of the original idea
+ of this thesis in its earliest infancy, for the inspiring and philosophical
+ approach to the field of machine-learning as a whole, and, of course, for
+ granting the much needed extension for completion;
+\begin_inset VSpace 50baselineskip%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+To my advisors, Ivan, Ami and Eugene: my heart-felt thanks to the extended
+ sessions of talks, the continuous support and the constructive suggestions;
+\begin_inset VSpace 50baselineskip%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+To my family and my friends: my sincere gratitude for the unyielding support
+ and care;
+\begin_inset VSpace 50baselineskip%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Finally, to J.
+ Neubauer: all my respect for his natural mastery of the game and brilliant
+ deliveries in the most competitive environments.
+ Rest in peace among these beloved pieces, 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+maestro
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
