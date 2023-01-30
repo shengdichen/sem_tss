@@ -211,7 +211,7 @@ pointnav
  distance of the agent to the target (see Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Reward-and-Termination"
+reference "subsec:pointnav-reward"
 plural "false"
 caps "false"
 noprefix "false"

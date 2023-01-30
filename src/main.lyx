@@ -53,7 +53,7 @@ todonotes
 \bibtex_command default
 \index_command default
 \paperfontsize 12
-\spacing other 1.27
+\spacing other 1.21
 \use_hyperref true
 \pdf_title "Sample Thesis"
 \pdf_author "Shengdi »shc« Chen"
