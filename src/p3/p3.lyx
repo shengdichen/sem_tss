@@ -1532,7 +1532,7 @@ Discrete
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2115,10 +2115,7 @@ For each of the candidate-trajectories, sub-sampling at frequency
 
  is performed by selecting state-action pairs once every certain number
  of time-steps.
-\end_layout
-
-\begin_layout Example
-Assume thus that within a certain selected episode-trajectory, the state-action
+ Assume thus that within a certain selected episode-trajectory, the state-action
  pair at the 
 \begin_inset Formula $k^{\text{th}}$
 \end_inset
@@ -2128,13 +2125,6 @@ Assume thus that within a certain selected episode-trajectory, the state-action
 \end_inset
 
  time-step.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2360,7 +2350,7 @@ By subsequently varying the specific constellation within the mixed and
 \end_inset
 
  expert-pools, identified with the hyper-parameter 
-\begin_inset Formula $h^{\text{id}}\in\left\{ 0,\cdots,6\right\} $
+\begin_inset Formula $h^{\text{pool}}\in\left\{ 0,\cdots,6\right\} $
 \end_inset
 
  defined in Table 
@@ -2407,7 +2397,7 @@ status open
 
 \begin_layout Plain Layout
 Pool-ID 
-\begin_inset Formula $h^{\text{id}}$
+\begin_inset Formula $h^{\text{pool}}$
 \end_inset
 
 
@@ -2895,6 +2885,98 @@ The IDs and constituents of the seven expert-pools.
 
 \end_layout
 
+\begin_layout Remark
+Symmetry-heuristics of the expert-pools 
+\begin_inset CommandInset label
+LatexCommand label
+name "rem:Symmetry-heuristics-of-expert-pool"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Attention shall be paid to pool-IDs 
+\begin_inset Formula $0$
+\end_inset
+
+, 
+\begin_inset Formula $3$
+\end_inset
+
+ and 
+\begin_inset Formula $6$
+\end_inset
+
+: due to the symmetry of the underlying 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ Variant-
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $2$
+\end_inset
+
+ as introduced in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:three-pointnav-variations"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, an expert-pool containing both or neither of these two shifted variants
+ shall generate heuristically unshifted trajectories with respect to the
+ main diagonal of the board, which is the ideal path for the default variant-
+\begin_inset Formula $0$
+\end_inset
+
+ of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+.
+ This specific characteristic of these expert-pools is studied later in
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:analysis-non-optimal-demo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Summary of hyper-parameters
 \end_layout
@@ -2909,7 +2991,7 @@ To conclude this chapter, the three configurable hyper-parameters of PW-IL
  as discussed above are presented as follows:
 \begin_inset Formula 
 \begin{align*}
-h^{\texttt{PW-IL}} & \coloneqq\left[\begin{alignedat}{1} & h^{\text{id}}\\
+h^{\texttt{PW-IL}} & \coloneqq\left[\begin{alignedat}{1} & h^{\text{pool}}\\
  & h^{\text{\#-traj}}\\
  & h^{\text{s-smp}}
 \end{alignedat}
@@ -2922,11 +3004,12 @@ h^{\texttt{PW-IL}} & \coloneqq\left[\begin{alignedat}{1} & h^{\text{id}}\\
 
 \end_inset
 
-With the distinct and continuous variants of the action-space, a total of
- 
+With the distinct and continuous variants of the action-space, the total
+ number of agents trained with the PW-IL algorithm is thus calculated as
+ follows:
 \begin_inset Formula 
 \[
-\begin{alignedat}{1}2\times\left|h\right| & \coloneqq2\times\left(\left|h^{\text{source}}\right|\times\left|h^{\text{\#-traj}}\right|\times h^{\text{s-smp}}\right)\\
+\begin{alignedat}{1}\underbrace{\quad\;2\;\quad}_{\text{disc\&cont}}\times\left|h\right| & \coloneqq2\times\left(\left|h^{\text{pool}}\right|\times\left|h^{\text{\#-traj}}\right|\times\left|h^{\text{s-smp}}\right|\right)\\
  & \coloneqq2\times\left(7\times3\times5\right)\\
  & \equiv210
 \end{alignedat}
@@ -2947,7 +3030,7 @@ With the distinct and continuous variants of the action-space, a total of
 
 \begin_layout Standard
 The upcoming sections analyze the performance of the PW-IL algorithm under
- varying configurations of the 
+ varying configurations of the three hyper-parameters nominated above.
 \end_layout
 
 \end_body

@@ -123,7 +123,7 @@ todonotes
 \begin_body
 
 \begin_layout Title
-A Study of Primal Wasserstein Imitation-Learning
+An Empirical Study of Primal Wasserstein Imitation-Learning
 \begin_inset Newline newline
 \end_inset
 
@@ -217,12 +217,25 @@ ch | 17-943-358
 \end_layout
 
 \begin_layout Abstract
+This thesis investigates the performance impact of various configurations
+ options of the Primal Wasserstein Imitation-Learning algorithm by empirically
+ correlating the settings of three hyper-parameters of the algorithm with
+ the performance of the resultant agents.
+ A separate evaluation framework is created with a sample test-environment
+ of a two-dimensional navigation task.
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-This thesis explores the correlation between various configurations of the
- Primal Wasserstein Imitation-Learning.
+By utilizing trajectories The qualitative of the demonstration is controlled
+\end_layout
+
+\begin_layout Plain Layout
+By utilizing expert trajectories on deliberately modified variants of the
+ actual target environment, the quality of the demonstration substantially
+ determines the performance of the resultant agent, the two other hyper-paramete
+rs number of expert-trajectories and the sub-sampling frequency are found
+ to and thus require the extensive tuning and parameter search.
 \end_layout
 
 \end_inset
@@ -297,7 +310,7 @@ A Practical Study of Primal Wasserstein Imitation-Learning
 status open
 
 \begin_layout Plain Layout
-A Practical Study of Primal Wasserstein Imitation-Learning
+An Empirical Study of Primal Wasserstein Imitation-Learning
 \end_layout
 
 \end_inset
