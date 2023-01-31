@@ -171,7 +171,7 @@ literal "false"
 \end_inset
 
 .
- Notable algorithms of RL include 
+ Representative algorithms of RL include 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "A2C,dqn-nature,PPO"
@@ -183,8 +183,8 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Key to the particular algorithm PW-IL in question is the Wasserstein distance,
- the 
+Key to the PW-IL algorithm in question is the Wasserstein distance, the
+ 
 \begin_inset Formula $p^{\text{th}}$
 \end_inset
 
@@ -196,11 +196,19 @@ literal "false"
 
 \end_inset
 
-, in connection with the optimal transport problem originally coined by
- 
+, displaying connections with the optimal transport problem originally coined
+ by 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "monge-memoire"
+literal "false"
+
+\end_inset
+
+ and expanded upon by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kantorovich-mass-transport,Kantorovich-problem-monge"
 literal "false"
 
 \end_inset
@@ -219,7 +227,33 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Other branches of RL include 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "extrapolate-suboptimal,learning-learner"
+literal "false"
+
+\end_inset
+
+ study RL training scenarios performed with non-optimal demonstrations.
+ Other Inverse Reinforcement Learning (IRL) methods are found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "irl-russel,irl-ng"
+literal "false"
+
+\end_inset
+
+.
+ Methodologies of the Behavioral Cloning (BC) paradigm are presented in
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bc-bagnell,bc-pomerleau,bc-Ross"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -262,7 +296,7 @@ Python
 status open
 
 \begin_layout Plain Layout
-Python 3.9
+3.9
 \end_layout
 
 \end_inset
@@ -425,57 +459,34 @@ The source-code of this project is distributed under the following repositories:
 \end_layout
 
 \begin_layout Itemize
-The modules for the formulation of various agents, as well as those for
- training and testing are published under the repository: 
+The main repository contains all code necessary for inspecting and reproducing
+ the training and testing results of this study and is published under:
+ 
 \begin_inset CommandInset href
 LatexCommand href
-name "Link to GitHub"
-target "https://github.com/shengdichen/shetris-train"
+name "GitLab [ETH-Domain]"
+target "https://gitlab.ethz.ch/shenchen/sem_code/"
 literal "false"
 
 \end_inset
 
-;
-\end_layout
-
-\begin_layout Itemize
-All other aspects of the Tetris-game, including the 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-engine
-\end_layout
-
-\end_inset
-
- as described in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Essential-Implementations"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-, are found at: 
+ and 
 \begin_inset CommandInset href
 LatexCommand href
-name "Link to GitHub"
-target "https://github.com/shengdichen/shetris-game"
+name "GitHub"
+target "https://github.com/shengdichen/sem_code"
 literal "false"
 
 \end_inset
 
-;
+.
 \end_layout
 
 \begin_layout Itemize
 This thesis-document is accessible under: 
 \begin_inset CommandInset href
 LatexCommand href
-name "Link to GitHub"
+name "GitHub"
 target "https://github.com/shengdichen/sem_tss/blob/main/src/main.pdf"
 literal "false"
 

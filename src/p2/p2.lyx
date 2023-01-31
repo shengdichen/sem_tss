@@ -325,6 +325,13 @@ literal "false"
 
 \begin_layout Subsubsection
 Application in RL
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:wasserstein-application-in-RL"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -372,12 +379,7 @@ A
 
 \end_inset
 
-The PW-IL algorithm considers only the first-order Wasserstein-distance
- 
-\begin_inset Formula $p\equiv1$
-\end_inset
-
- and imposes the restriction of distributions with only finite support(
+The PW-IL algorithm 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "main-paper"
@@ -385,17 +387,21 @@ literal "false"
 
 \end_inset
 
-).
+ considers only the first-order Wasserstein-distance 
+\begin_inset Formula $p\equiv1$
+\end_inset
+
+ and imposes the restriction of distributions with only finite support.
  With 
 \begin_inset Formula $D$
 \end_inset
 
  state-action pairs as demonstration provided by some expert, the Wasserstein-di
-stance between some policy 
+stance between policy 
 \begin_inset Formula $\pi$
 \end_inset
 
- and the expert is found with:
+ and the expert itself is found with:
 \begin_inset Formula 
 \[
 \mathcal{W}_{p\equiv1}\left(\pi,\text{expert}\right)\coloneqq\mathop{\inf_{\theta\in\Theta}}\mathop{\sum_{i\in\left[1;T\,\right]}}\mathop{\sum_{j\in\left[1;D\right]}}\left\{ d\left(\left[\begin{alignedat}{1}s_{i}^{\pi}\\
@@ -435,6 +441,21 @@ noprefix "false"
 
 \end_layout
 
+\begin_layout Standard
+Detailed discussions on the expert-demonstrations are found later in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Demonstration-Setup"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 The PW-IL algorithm
 \end_layout
@@ -447,10 +468,10 @@ literal "false"
 
 \end_inset
 
- observes that solving for the optimal solution of the Wasserstein distance
+ observes that solving for the optimal solution of the Wasserstein-distance
  necessitates trajectory information of the entire episode, posing difficulties
- for online learning tasks and environments .This requirement is bypassed
- by the PW-IL algorithm in 
+ for online learning tasks and environments of prolonged episodes.
+ This requirement is bypassed by the PW-IL algorithm in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "main-paper"
@@ -462,7 +483,7 @@ literal "false"
 \begin_inset Formula $\theta^{\star}$
 \end_inset
 
- (with respect to the true Wasserstein distance), the following greedy coupling
+ (with respect to the true Wasserstein-distance), the following greedy coupling
  
 \begin_inset Formula $\theta^{\text{grd}}$
 \end_inset
@@ -470,7 +491,7 @@ literal "false"
  is deployed:
 \begin_inset Formula 
 \[
-\begin{alignedat}{1}\theta^{\text{grd}} & \coloneqq\underset{\theta\left[i,T\right]\in\Theta_{i}}{\arg\min}\mathop{\sum_{j\in\left[1;D\right]}}\end{alignedat}
+\begin{alignedat}{1}\theta^{\text{grd}} & \coloneqq\underset{\theta\left[i,T\,\right]\in\Theta_{i}}{\arg\min}\mathop{\sum_{j\in\left[1;D\right]}}\end{alignedat}
 \left\{ d\left(\left[\begin{alignedat}{1}s_{i}^{\pi}\\
 a_{i}^{\pi}
 \end{alignedat}
@@ -482,19 +503,18 @@ a_{j}^{\text{expert}}
 
 \end_inset
 
+with the set 
+\begin_inset Formula $\Theta_{i}\coloneqq\left\{ \theta\left[i,T\,\right]\in\mathbb{R}^{D,+}\right\} $
+\end_inset
 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-The coupling is greedy as it
-\end_layout
-
-\begin_layout Plain Layout
-The optimizer is deliberately non-optimal with respect to the original Wasserste
-in-distance: in fact, the underlying optimization-problem guarantees an
- upper-bound for the Wasserstein distance.
-\end_layout
+ satisfying the constraints:
+\begin_inset Formula 
+\[
+\Theta_{i}\triangleq\left\{ \begin{alignedat}{1} & \sum_{j'\in\left[1;D\right]}\theta\left(i,j'\right)=\frac{1}{T}\\
+ & \forall k\in\left[1;D\right],\;\sum_{i'\in\left[1;i-1\right]}\left\{ \theta^{\text{grd}}\left(i',k\right)+\theta\left(i,k\right)\right\} \leq\frac{1}{T}
+\end{alignedat}
+\right.
+\]
 
 \end_inset
 
@@ -502,7 +522,16 @@ in-distance: in fact, the underlying optimization-problem guarantees an
 \end_layout
 
 \begin_layout Standard
-Using the greedy coupling 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ further shows that the greedy-coupling is non-optimal and thus by-definition
+ serves as an upper-bound for the true Wasserstein-distance.
+ Using the greedy coupling 
 \begin_inset Formula $\theta^{\text{grd}}$
 \end_inset
 
@@ -522,6 +551,37 @@ offline
 
  manner, without re-evaluation throughout the agent's interaction with the
  underlying environment.
+ The minimizer with this greedy-coupling 
+\begin_inset Formula $\theta^{\text{grd}}$
+\end_inset
+
+ is finally used to calculate the per-time-step reward:
+\begin_inset Formula 
+\[
+r_{i}^{\texttt{PW-IL}}\coloneqq f\left(\mathop{\sum_{j\in\left[1;D\right]}}\left\{ d\left(\left[\begin{alignedat}{1}s_{i}^{\pi}\\
+a_{i}^{\pi}
+\end{alignedat}
+\right],\left[\begin{alignedat}{1}s_{j}^{\text{expert}}\\
+a_{j}^{\text{expert}}
+\end{alignedat}
+\right]\right)\theta^{\text{grd}}\left(i,j\right)\right\} \right)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $f$
+\end_inset
+
+ chosen as:
+\begin_inset Formula 
+\[
+f\left(c\right)\coloneqq5\:\exp\left(-\frac{5T}{\left(\left|S\right|+\left|A\right|\right)^{\nicefrac{1}{2}}}\,c\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -529,11 +589,7 @@ Further details
 \end_layout
 
 \begin_layout Standard
-With the complexity of computing one reward-value as 
-\begin_inset Formula $\mathcal{O}\left(\left(\left|S\right|+\left|A\right|\right)D+\nicefrac{D^{2}}{T}\right)$
-\end_inset
-
-, 
+Per 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "main-paper"
@@ -541,7 +597,12 @@ literal "false"
 
 \end_inset
 
- states total runtime estimate across the entire time-horizon of 
+, the complexity of computing the reward-value after one time-step is 
+\begin_inset Formula $\mathcal{O}\left(\left(\left|S\right|+\left|A\right|\right)D+\nicefrac{D^{2}}{T}\right)$
+\end_inset
+
+.
+ Thus, the total runtime estimate across the entire time-horizon of 
 \begin_inset Formula $T$
 \end_inset
 
@@ -566,11 +627,7 @@ literal "false"
 \end_inset
 
  for further derivation details and (non-)optimality discussions with respect
- to the greedy coupling 
-\begin_inset Formula $\theta^{\text{greedy}}$
-\end_inset
-
- and the resultant PW-IL algorithm.
+ to the greedy coupling and the resultant PW-IL algorithm.
 \end_layout
 
 \end_body

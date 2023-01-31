@@ -276,7 +276,7 @@ noprefix "false"
 
 \end_inset
 
- for further discussion of termination-criteria.
+ for further discussion of the termination-criteria.
 \end_layout
 
 \begin_layout Standard
@@ -286,8 +286,8 @@ Given the starting position of the agent at
 
 , the ideal path thus traverses diagonally across the board: from the starting
  position in the lower, left corner to first reach the first target in the
- middle, followed by moving towards second target in the upper, right corner
- at 
+ middle, followed by moving towards the second target in the upper, right
+ corner at 
 \begin_inset Formula $\left(190;190\right)$
 \end_inset
 
@@ -318,7 +318,7 @@ The reward at time-step
 \begin_inset Formula $t$
 \end_inset
 
- at is calculated as the negative 
+ is calculated as the negative 
 \begin_inset Formula $L^{2}$
 \end_inset
 
@@ -356,7 +356,7 @@ An episode is terminated if both targets have been found or if the internal
 \begin_inset Formula $1000$
 \end_inset
 
- time-steps as the maximal episode-length is provided below in Note 
+ time-steps as the maximal episode-length is provided in Note 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "note:Episode-Length-of-PointNav"
@@ -425,7 +425,7 @@ PointNav
 
 \end_inset
 
-: the default without any shifting is identified as Variant-
+: the default (without shifting) is identified as Variant-
 \begin_inset Formula $0$
 \end_inset
 
@@ -437,7 +437,7 @@ PointNav
 \begin_inset Formula $2$
 \end_inset
 
-) symmetrically performs shifting of 
+) symmetrically perform shifting of 
 \begin_inset Formula $+50$
 \end_inset
 
@@ -928,7 +928,7 @@ np.round()
 \begin_inset Formula $\pm2$
 \end_inset
 
-: exactly desired behavior.
+, corresponding to the desired behavior.
 \end_layout
 
 \end_inset
@@ -1141,11 +1141,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Subsubsection
-The 
-\begin_inset Formula $6$
-\end_inset
-
- variants
+The six variants
 \end_layout
 
 \begin_layout Standard
@@ -1856,11 +1852,28 @@ PointNav
 \end_layout
 
 \begin_layout Section
-Expert-Demonstration Setup
+Demonstration Setup
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Demonstration-Setup"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-As setup for deploying the PW-IL method, the 
+As briefly touched upon in the introductory Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:wasserstein-application-in-RL"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the 
 \begin_inset Quotes xld
 \end_inset
 
@@ -1868,7 +1881,7 @@ demonstration
 \begin_inset Quotes xrd
 \end_inset
 
- from the expert-agent must first be provided.
+ from the expert-agent must be provided before deploying the PW-IL method.
  This section defines such demonstrations and describes the hyper-parameters
  available to the process of their generation.
 \end_layout
@@ -2024,8 +2037,11 @@ The candidate-trajectories used to generate the demonstration is given as:
 
 \end_inset
 
-where the number of candidate-trajectories constitutes a configurable hyper-para
-meter of the PW-IL algorithm:
+where the number of candidate-trajectories 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ constitutes a configurable hyper-parameter of the PW-IL algorithm:
 \begin_inset Formula 
 \[
 h^{\text{\#-traj}}\coloneqq\left|\texttt{candidates-traj}^{\text{PW-IL}}\right|
@@ -2113,8 +2129,11 @@ For each of the candidate-trajectories, sub-sampling at frequency
 \begin_inset Formula $h^{\text{s-smp}}$
 \end_inset
 
- is performed by selecting state-action pairs once every certain number
- of time-steps.
+ is performed by selecting state-action pairs once every 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+ time-step(s).
  Assume thus that within a certain selected episode-trajectory, the state-action
  pair at the 
 \begin_inset Formula $k^{\text{th}}$
@@ -2196,8 +2215,8 @@ Besides the number of candidate-trajectories
 \begin_inset Formula $h^{\text{s-smp}}$
 \end_inset
 
-, the quality of the demonstration itself is configurable, as also studied
- in 
+, the quality of the demonstration itself is configurable.
+ as also studied in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "extrapolate-suboptimal,learning-learner"
@@ -2254,8 +2273,8 @@ PointNav
 \begin_inset Formula $2$
 \end_inset
 
- in the set of candidate-trajectories, one might actively control the quality
- of the demonstration for PW-IL.
+ in the set of candidate-trajectories, one may actively control the quality
+ of the demonstration as input for PW-IL.
 \end_layout
 
 \begin_layout Standard
@@ -2281,7 +2300,7 @@ default-expert
 \begin_inset Quotes xrd
 \end_inset
 
- or: 
+ or 
 \begin_inset Quotes xld
 \end_inset
 
@@ -2306,12 +2325,20 @@ expert-
 \end_inset
 
  and 
+\begin_inset Quotes xld
+\end_inset
+
+expert-
 \begin_inset Formula $2$
+\end_inset
+
+
+\begin_inset Quotes xrd
 \end_inset
 
  respectively.
  The presence of the non-default experts in the expert-pool thus leads to
- non-optimal demonstration.
+ non-optimal demonstrations.
  Furthermore, one distinguishes between the 
 \begin_inset Quotes xld
 \end_inset
@@ -2344,16 +2371,13 @@ distant
 \end_layout
 
 \begin_layout Standard
-By subsequently varying the specific constellation within the mixed and
- non-optimal pools, one observes the 
-\begin_inset Formula $7$
-\end_inset
-
- expert-pools, identified with the hyper-parameter 
+By subsequently varying the specific constellation within the non-optimal
+ pools, one observes in total seven different expert-pools deployed in this
+ study, identified with the hyper-parameter 
 \begin_inset Formula $h^{\text{pool}}\in\left\{ 0,\cdots,6\right\} $
 \end_inset
 
- defined in Table 
+ in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:seven-expert-pools"
@@ -2955,8 +2979,8 @@ PointNav
 \end_inset
 
 .
- This specific characteristic of these expert-pools is studied later in
- Section 
+ This specific property of these expert-pools is studied later in Section
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:analysis-non-optimal-demo"
@@ -2979,6 +3003,13 @@ noprefix "false"
 
 \begin_layout Subsection
 Summary of hyper-parameters
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:three-hyper-parameters"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Conclusion
@@ -2988,7 +3019,7 @@ Configuration-Space of PW-IL
 \begin_deeper
 \begin_layout Standard
 To conclude this chapter, the three configurable hyper-parameters of PW-IL
- as discussed above are presented as follows:
+ as discussed above are presented:
 \begin_inset Formula 
 \begin{align*}
 h^{\texttt{PW-IL}} & \coloneqq\left[\begin{alignedat}{1} & h^{\text{pool}}\\
@@ -3009,7 +3040,7 @@ With the distinct and continuous variants of the action-space, the total
  follows:
 \begin_inset Formula 
 \[
-\begin{alignedat}{1}\underbrace{\quad\;2\;\quad}_{\text{disc\&cont}}\times\left|h\right| & \coloneqq2\times\left(\left|h^{\text{pool}}\right|\times\left|h^{\text{\#-traj}}\right|\times\left|h^{\text{s-smp}}\right|\right)\\
+\begin{alignedat}{1}\underbrace{\quad\;2\;\quad}_{\text{disc\&cont}}\times\left|h^{\texttt{PW-IL}}\right| & \coloneqq2\times\left(\left|h^{\text{pool}}\right|\times\left|h^{\text{\#-traj}}\right|\times\left|h^{\text{s-smp}}\right|\right)\\
  & \coloneqq2\times\left(7\times3\times5\right)\\
  & \equiv210
 \end{alignedat}

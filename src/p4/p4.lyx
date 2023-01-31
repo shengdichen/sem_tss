@@ -181,7 +181,7 @@ noprefix "false"
 
 \end_inset
 
- for justification of the baseline episode-length value of 
+ for justifications of the baseline episode-length value of 
 \begin_inset Formula $1000$
 \end_inset
 
@@ -193,7 +193,7 @@ Alternatively, the reward
 \begin_inset Formula $m^{\text{Reward}}$
 \end_inset
 
- returned by the environment is used to gauge the agent's performance.
+ returned by the environment could be used to gauge the agent's performance.
  However, as the reward of 
 \begin_inset Flex Code
 status open
@@ -240,13 +240,10 @@ hovering
 \begin_inset Formula $m^{\text{Reward}}$
 \end_inset
 
- constitutes a loose guideline for training effectiveness.
-\end_layout
-
-\begin_layout Standard
-Empirical observations suggest that a random agent displays episode-reward
- 
-\begin_inset Formula $m^{\text{Reward}}\lessapprox-1.2\,\text{e}5$
+ constitutes a loose guideline for training efficacy.
+ Empirical observations suggest that a random agent displays reward-values
+ of approximately 
+\begin_inset Formula $\lessapprox-1.2\,\text{e}5$
 \end_inset
 
 , whereas signs of 
@@ -257,19 +254,11 @@ meaningful
 \begin_inset Quotes xrd
 \end_inset
 
- training are found for reward-values greater than 
+ training are found for values greater than 
 \begin_inset Formula $-7.0\,\text{e}4$
 \end_inset
 
 .
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -288,14 +277,9 @@ noprefix "false"
  
 \end_layout
 
+\end_deeper
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Add words to this table
-\end_layout
-
+\begin_inset Separator plain
 \end_inset
 
 
@@ -676,7 +660,7 @@ name "tab: Performance Metrics"
 
 \end_inset
 
-tab: The two performance measures for agents interacting with 
+The two performance measures for agents interacting with 
 \begin_inset Flex Code
 status open
 
@@ -694,8 +678,7 @@ PointNav
 \begin_inset Formula $m^{\text{Reward}}$
 \end_inset
 
- presents an alternative unofficial metric for casual inspection of training
- effect.
+ presents an unofficial metric for casual inspection of training effect.
 \end_layout
 
 \end_inset
@@ -797,7 +780,7 @@ literal "false"
 
 \end_inset
 
- can be utilized.
+ can be utilized without difficulty.
 \end_layout
 
 \begin_layout Standard
@@ -823,7 +806,7 @@ PointNav
 
  environment variant is performed.
  The model yielding the best evaluation-reward respectively is saved as
- the final resultant agent when the training period has elapsed.
+ the final, resultant agent when the training period has elapsed.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1687,8 +1670,8 @@ PointNav
 \end_layout
 
 \begin_layout Standard
-Further more, despite being ultimately discretized with rounding of the
- action, the continuous 
+Further more, despite being ultimately discretized through action-rounding,
+ the continuous 
 \begin_inset Flex Code
 status open
 
@@ -1699,8 +1682,8 @@ PointNav
 \end_inset
 
  is solved more robustly than the discrete version.
- One observes, in particular, the Variation-2 of the discrete model demonstrates
- high standard-deviation with respect to episode-length 
+ One observes that, in particular, the Variation-2 of the discrete model
+ demonstrates high standard-deviation for episode-length 
 \begin_inset Formula $m^{\text{Length}}$
 \end_inset
 
@@ -1708,8 +1691,9 @@ PointNav
 \end_layout
 
 \begin_layout Standard
-It is also evident that the experts solve the default variant of both the
- continuous and discrete environment better than the shifted ones respectively.
+It is also evident that the respective experts solve the default variant
+ of both the continuous and discrete environment better than the shifted
+ ones.
 \end_layout
 
 \end_deeper
@@ -1746,7 +1730,7 @@ noprefix "false"
 
 \end_inset
 
- provides various graphs for studying the an agent interacting with 
+ provides various graphs for studying an agent interacting with 
 \begin_inset Flex Code
 status open
 
@@ -1797,7 +1781,7 @@ The two plots on the left demonstrate the agent's position across the
 \end_layout
 
 \begin_layout Itemize
-The upper-right plot provide the locations of the two targets as described
+The upper-right plot provides the locations of the two targets as described
  
 \begin_inset Note Note
 status open
@@ -1977,13 +1961,27 @@ Subsequently, the plotting utilities offer further insight to the real-time
 
 \begin_layout Standard
 Both the stats and the plotting outputs are saved for all the Experts above
- and the PW-IL agents introduced in the upcoming section.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Add github location
+ and the PW-IL agents introduced in the upcoming section:
 \end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub: Outputs of the Experts"
+target "https://github.com/shengdichen/sem_code/tree/main/src/ours/eval/pointenv/expert/demos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub: Outputs of PW-IL"
+target "https://github.com/shengdichen/sem_code/tree/main/src/ours/eval/pointenv/pwil/demos"
+literal "false"
 
 \end_inset
 
@@ -2004,7 +2002,7 @@ Results of PW-IL
 
 \begin_layout Standard
 This section presents the result of agents trained with the PW-IL algorithm,
- sorted by the optimality of the demonstration.
+ sorted by the optimality of the input expert-demonstrations.
  Due to the elevated number of models trained, instead of the separate study
  of individual models as seen in Table 
 \begin_inset CommandInset ref
@@ -2026,20 +2024,21 @@ noprefix "false"
 
 \end_inset
 
-, the performance of multiple models are grouped together with respect to
- hyper-parameter choices for visual inspection.
+, the performance of multiple models are grouped together by hyper-parameter
+ choices for visual inspection.
 \end_layout
 
 \begin_layout Standard
 Note that all PW-IL agents are trained for 
-\begin_inset Formula $5\,\text{e}5$
+\begin_inset Formula $500$
 \end_inset
 
- steps with the same intermediate evaluation frequency of 
-\begin_inset Formula $1\,\text{e}4$
+ thousand steps with the same intermediate evaluation frequency of 
+\begin_inset Formula $10$
 \end_inset
 
- steps as for the Expert to select the best performing model.
+ thousand steps as for the six previously introduced Experts to select the
+ best performing model.
 \end_layout
 
 \begin_layout Subsection
@@ -2047,8 +2046,15 @@ Optimal demonstration
 \end_layout
 
 \begin_layout Standard
-To commence, the performance of the PW-IL agents with the are presented
- in Figure 
+To commence, the performance of the PW-IL agents with the 
+\begin_inset Quotes xld
+\end_inset
+
+optimal
+\begin_inset Quotes xrd
+\end_inset
+
+ pool are presented in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:pwil-optimal"
@@ -2062,7 +2068,7 @@ noprefix "false"
 \begin_inset Formula $m^{\text{Length}}$
 \end_inset
 
- as performance measure, whereas the lower the reward 
+ as performance measure, whereas the lower the reward-values 
 \begin_inset Formula $m^{\text{Reward}}$
 \end_inset
 
@@ -2113,7 +2119,7 @@ Performance of PW-IL with expert-pool
 \begin_inset Formula $h^{\text{pool}}=0$
 \end_inset
 
-, i.e., optimal demonstration quality.
+ (optimal demonstrations).
 \end_layout
 
 \end_inset
@@ -2132,10 +2138,18 @@ Analysis of PW-IL with optimal demonstration
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:optimal"
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Solution
-At first glance, one immediately observes that for the majority of the 
+\begin_deeper
+\begin_layout Standard
+At first glance, one observes that for the majority of the 
 \begin_inset Formula $\left(h^{\text{\#-traj}},h^{\text{s-smp}}\right)$
 \end_inset
 
@@ -2194,8 +2208,7 @@ PointNav
  respectively:
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
 For the discrete 
 \begin_inset Flex Code
 status open
@@ -2214,17 +2227,19 @@ PointNav
 \begin_inset Formula $\left(5,20\right)$
 \end_inset
 
- are the two setups leading to unsatisfied baseline.
+ are the only two setups leading to unsatisfied baseline.
  In particular, one observes from the upper-left plot that PW-IL agents
  with a higher number of trajectories in the demonstration 
 \begin_inset Formula $h^{\text{\#-traj}}=10$
 \end_inset
 
- uniformly out-performs the agents with lower trajectories-count 
+ (marked green) uniformly out-performs the agents with lower trajectories-count
+ 
 \begin_inset Formula $h^{\text{\#-traj}}=1$
 \end_inset
 
-, conforming to the expectation of the author of PW-IL in 
+ (marked blue), conforming to the expectation of the author of PW-IL in
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "main-paper"
@@ -2237,8 +2252,8 @@ literal "false"
 \begin_inset Formula $h^{\text{\#-traj}}=5$
 \end_inset
 
-, the agents do not consistently out-perform or under-perform the cases
- of 
+ (marked orange), the agents do not consistently out-perform or under-perform
+ the cases of 
 \begin_inset Formula $1$
 \end_inset
 
@@ -2255,15 +2270,25 @@ literal "false"
 \begin_inset Formula $h^{\text{s-smp}}$
 \end_inset
 
-, larger values degrade the performance 
+, larger values degrade the performance of the case where 
+\begin_inset Formula $h^{\text{\#-traj}}=5$
+\end_inset
+
+, and appears to have little to even the opposite impact for the configurations
+ 
+\begin_inset Formula $h^{\text{\#-traj}}\in\left\{ 10,1\right\} $
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 For the continuous counterpart, the highest trajectories-number 
 \begin_inset Formula $h^{\text{\#-traj}}=10$
 \end_inset
 
- displays high variance: with three cases of 
+ (marked green) displays high variance (upper-right plot): with three cases
+ of 
 \begin_inset Formula $h^{\text{s-smp}}$
 \end_inset
 
@@ -2276,7 +2301,7 @@ For the continuous counterpart, the highest trajectories-number
 \begin_inset Formula $h^{\text{\#-traj}}=1$
 \end_inset
 
-, the expert performance is recovered for 
+ (marked blue), the expert performance is recovered for 
 \begin_inset Formula $h^{\text{s-smp}}\leq5$
 \end_inset
 
@@ -2303,7 +2328,7 @@ For the continuous counterpart, the highest trajectories-number
 \begin_inset Formula $h^{\text{\#-traj}}=10$
 \end_inset
 
-.
+ due to high fluctuations.
 \end_layout
 
 \end_deeper
@@ -2316,6 +2341,13 @@ For the continuous counterpart, the highest trajectories-number
 
 \begin_layout Solution
 Relationship between length and reward
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:optimal-length-and-reward"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2338,9 +2370,8 @@ noprefix "false"
 
 , this indicates extended hovering of the agent in close proximity to a
  target without actually reach its position.
- Despite not passing the baseline, these agents nevertheless display positive
- training impact.
- 
+ Despite not passing the baseline, these agents nevertheless demonstrate
+ positive training impact.
 \end_layout
 
 \begin_layout Standard
@@ -2632,7 +2663,7 @@ mixed
  expert-pools
 \begin_inset CommandInset label
 LatexCommand label
-name "solu:discrete-pointnav-mixed"
+name "solu:discrete-mixed"
 
 \end_inset
 
@@ -2657,7 +2688,7 @@ mixed
 \begin_inset Formula $h^{\text{\#-traj}}=1$
 \end_inset
 
- consistently under-perform the cases of 
+ (marked blue) consistently under-perform the cases of 
 \begin_inset Formula $h^{\text{\#-traj}}\in\left\{ 5,10\right\} $
 \end_inset
 
@@ -2673,11 +2704,11 @@ mixed
 \begin_inset Formula $h^{\text{\#-traj}}$
 \end_inset
 
- surprisingly out-performs the settings with 
+ (marked orange)surprisingly out-performs the settings with 
 \begin_inset Formula $h^{\text{\#-traj}}=10$
 \end_inset
 
-.
+ (marked green).
  Also, considerable fluctuations are observed for these particular expert-pools
  of ID 
 \begin_inset Formula $1$
@@ -2688,8 +2719,21 @@ mixed
 \end_inset
 
 .
- One shall also note that for the configuration of 
-\begin_inset Formula $\left(h^{\text{pool}},h^{\text{\#-traj}},h^{\text{s-smp}}\right)=\left(2,10,1\right)$
+ One concludes that for higher sub-sampling frequencies 
+\begin_inset Formula $h^{\text{s-smp}}\geq5$
+\end_inset
+
+, higher 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ values most likely exceed the case of only one trajectory (
+\begin_inset Formula $h^{\text{\#-traj}}=1$
+\end_inset
+
+).
+ One shall also note that for the configurations of 
+\begin_inset Formula $\left(h^{\text{pool}},h^{\text{\#-traj}},h^{\text{s-smp}}\right)\in\left\{ \left(2,10,1\right),\left(2,5,5\right)\right\} $
 \end_inset
 
 , 
@@ -2697,12 +2741,12 @@ mixed
 status open
 
 \begin_layout Plain Layout
-super-expert
+super
 \end_layout
 
 \end_inset
 
- performance is achieved.
+-expert performance is achieved.
 \end_layout
 
 \begin_layout Standard
@@ -2710,7 +2754,7 @@ For the pool-ID
 \begin_inset Formula $h^{\text{pool}}=3$
 \end_inset
 
-, disregarding the sub-sampling frequency of 
+ (lower-left), disregarding the sub-sampling frequency of 
 \begin_inset Formula $h^{\text{s-smp}}=1$
 \end_inset
 
@@ -2727,8 +2771,8 @@ For the pool-ID
 \end_layout
 
 \begin_layout Standard
-This observation aligns with statements and findings of the original paper
- 
+This observation aligns with the statements and the findings of the original
+ paper 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "main-paper"
@@ -2954,7 +2998,7 @@ mixed
  expert-pools 
 \begin_inset CommandInset label
 LatexCommand label
-name "solu:continuous-pointnav-mixed"
+name "solu:continuous-mixed"
 
 \end_inset
 
@@ -2963,16 +3007,32 @@ name "solu:continuous-pointnav-mixed"
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset Note Note
+High variations are observed for PW-ILs agents with mixed expert-pools.
+ In particular, only the configuration of 
+\begin_inset Formula $\left(h^{\text{pool}},h^{\text{\#-traj}}\right)=\left(3,10\right)$
+\end_inset
+
+ (blue line of lower-left plot) meets the baseline 
+\begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
-Text
+PointNav
 \end_layout
 
 \end_inset
 
+ across all sub-sampling frequencies.
+\end_layout
 
+\begin_layout Standard
+One also notes that the expert performance is recovered in multiple cases,
+ in particular, these high-performing agents are mostly trained with larger
+ trajectories-numbers 
+\begin_inset Formula $h^{\text{\#-traj}}\in\left\{ 5,10\right\} $
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
@@ -2995,7 +3055,7 @@ distant
  pools
 \begin_inset CommandInset label
 LatexCommand label
-name "solu:Continuous-pointnav-distant"
+name "solu:Continuous-distant"
 
 \end_inset
 
@@ -3018,8 +3078,17 @@ For higher
 
 \begin_layout Standard
 Unlike the discrete case, where the distant pools lead to hardly any agents
- meeting the baseline, the continuous environment leads to multiple successfully
- trained PW-IL models.
+ meeting the baseline, the continuous 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ produces to multiple successfully trained PW-IL models.
  In particular, for 
 \begin_inset Formula $h^{\text{pool}}\in\left\{ 5,6\right\} $
 \end_inset
@@ -3028,13 +3097,13 @@ Unlike the discrete case, where the distant pools lead to hardly any agents
 \begin_inset Formula $h^{\text{\#-traj}}=5$
 \end_inset
 
-, the baseline is met for every choise of sub-sampling frequency, and the
- configurations of 
+ (marked orange), the baseline is met for every choice of sub-sampling frequency
+, and the configurations of 
 \begin_inset Formula $\left(h^{\text{pool}},h^{\text{\#-traj}}\right)=\left(6,10\right)$
 \end_inset
 
  (green line in lower right plot) manage to surpass the baseline by a comfortabl
-e margin.
+e margin for all sub-sampling frequencies.
 \end_layout
 
 \begin_layout Standard
