@@ -2583,11 +2583,11 @@ name "fig:non-optimal-pwil-discrete"
 
 \end_inset
 
-Performance wrt episode-length 
+Episode-length 
 \begin_inset Formula $m^{\text{Length}}$
 \end_inset
 
- of PW-IL on discrete 
+ Performance of PW-IL on discrete 
 \begin_inset Flex Code
 status open
 
@@ -2630,6 +2630,13 @@ mixed
 \end_inset
 
  expert-pools
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:discrete-pointnav-mixed"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2758,6 +2765,13 @@ distant
 \end_inset
 
  pools and the symmetry-heuristics
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:discrete-distant"
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2770,8 +2784,8 @@ For the distant expert-pool, the performance of the PW-IL agents are bleak
 \end_inset
 
 .
- Although the resultant agent just about met the baseline requirement, the
- symmetry-heuristics of pool-ID 
+ Although this particular agent just about met the baseline requirement,
+ the symmetry-heuristics of pool-ID 
 \begin_inset Formula $6$
 \end_inset
 
@@ -2785,8 +2799,8 @@ noprefix "false"
 
 \end_inset
 
- might nevertheless be taken into account as explanation for comparatively
- better performance of agents 
+ might nevertheless be taken into account: In particular, one observes comparati
+vely better performance of agents 
 \begin_inset Formula $h^{\text{s-smp}}=6$
 \end_inset
 
@@ -2891,11 +2905,11 @@ name "fig:non-optimal-pwil-continuous"
 
 \end_inset
 
-Performance wrt episode-length 
+Episode-length 
 \begin_inset Formula $m^{\text{Length}}$
 \end_inset
 
- of PW-IL on continuous 
+ performance of PW-IL on continuous 
 \begin_inset Flex Code
 status open
 
@@ -2937,9 +2951,31 @@ mixed
 \begin_inset Quotes xrd
 \end_inset
 
- expert-pools
+ expert-pools 
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:continuous-pointnav-mixed"
+
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Text
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -2957,22 +2993,120 @@ distant
 \end_inset
 
  pools
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:Continuous-pointnav-distant"
 
-\begin_layout Solution
-For higher 
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Unlike the discrete case, where the distant pools lead to hardly any agents
- meeting the baseline, the continuous environment leads to multiple successfully
- trained models.
- The significance of this lies in the fact that distant pools are defined
- as experts-trajectories on strictly non default environments.
- In other words, given experts 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+For higher 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Unlike the discrete case, where the distant pools lead to hardly any agents
+ meeting the baseline, the continuous environment leads to multiple successfully
+ trained PW-IL models.
+ In particular, for 
+\begin_inset Formula $h^{\text{pool}}\in\left\{ 5,6\right\} $
+\end_inset
+
+ and trajectories-number 
+\begin_inset Formula $h^{\text{\#-traj}}=5$
+\end_inset
+
+, the baseline is met for every choise of sub-sampling frequency, and the
+ configurations of 
+\begin_inset Formula $\left(h^{\text{pool}},h^{\text{\#-traj}}\right)=\left(6,10\right)$
+\end_inset
+
+ (green line in lower right plot) manage to surpass the baseline by a comfortabl
+e margin.
+\end_layout
+
+\begin_layout Standard
+The significance of this lies in the fact that the 
+\begin_inset Quotes xld
+\end_inset
+
+distant
+\begin_inset Quotes xrd
+\end_inset
+
+ pools (
+\begin_inset Formula $h^{\text{pool}}\in\left\{ 4,5,6\right\} $
+\end_inset
+
+) are defined as experts-trajectories on strictly non default environments
+ (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:seven-expert-pools"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ In other words, given completely skewed demonstrations for continuous 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+, the PW-IL algorithm still manages to recover the correct behavior for
+ the true, unshifted target environment.
+ Similar training using suboptimal expert-demonstrations are presented in
+ researches of the Inverse Reinforcement-Learning (IRL) methodology such
+ as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "learning-learner,extrapolate-suboptimal"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Further symmetry discussions 
+\begin_inset CommandInset label
+LatexCommand label
+name "rem:Further-symmetry-discussions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 It shall be finally noted that the symmetry-heuristics in Remark 
 \begin_inset CommandInset ref
@@ -2984,8 +3118,8 @@ noprefix "false"
 
 \end_inset
 
- no longer appears to apply in the continuous setting, as the agents of
- Pool-ID 
+ no longer appears to fully apply in the continuous setting, as the agents
+ of Pool-ID 
 \begin_inset Formula $3$
 \end_inset
 
@@ -3002,7 +3136,15 @@ noprefix "false"
 \end_inset
 
 .
- 
+ Also, the symmetry is lost between Pool-ID 
+\begin_inset Formula $4$
+\end_inset
+
+ and 
+\begin_inset Formula $5$
+\end_inset
+
+, as the latter displays visibly better statistics.
 \end_layout
 
 \end_deeper
@@ -3011,10 +3153,6 @@ noprefix "false"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Conclusions
 \end_layout
 
 \begin_layout Standard
@@ -3543,83 +3681,6 @@ The best hyper-parameters configurations of every
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-From the analyses of the correlation between various hyper-parameter configurati
-ons and the 
-\end_layout
-
-\begin_layout Enumerate
-The quality of the demonstration provided to the PW-IL algorithm significantly
- impacts the perform.
- Although non-optimal demonstration might also lead to successful training,
- deploying high quality demonstration leads to dramatically improved probability
- of both meeting the baseline and further achieving excellent performance.
-\end_layout
-
-\begin_layout Enumerate
-Higher trajectories-numbers generally leads to better performance at larger
- sub-sampling values.
- Thus, if the expert-trajectories are known to be composed of state-action
- pairs with larger time-step gaps in-between, one might consider compensating
- by collecting more trajectories.
-\end_layout
-
-\begin_layout Enumerate
-Hardly any 
-\begin_inset Flex Emph
-status open
-
-\begin_layout Plain Layout
-a priori
-\end_layout
-
-\end_inset
-
- predictions can be made for the best configuration of the hyper-parameters
- of PW-IL.
- As demonstrated by above, by simply manipulating the continuity of the
- 
-\begin_inset Flex Code
-status open
-
-\begin_layout Plain Layout
-PointNav
-\end_layout
-
-\end_inset
-
- environment, one obtains vastly different training results by the PW-IL
- algorithm and, in turn, optimal hyper-parameter values.
- Therefore, for every specific usage instance of PW-IL, one shall perform
- separate hyper-parameter search to configure the idea number of trajectories
- 
-\begin_inset Formula $h^{\text{\#-traj}}$
-\end_inset
-
- and the sub-sampling frequency 
-\begin_inset Formula $h^{\text{s-smp}}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-The 
-\begin_inset Quotes xld
-\end_inset
-
-magic
-\begin_inset Quotes xrd
-\end_inset
-
- of PW-IL: It is possible to successfully train the PW-IL agent even if
- the provided demonstration are completely generated by experts of a different,
- modified environment.
- Furthermore, the expert performance could be fully recovered even if the
- demonstration contains such expert-trajectories of another variant of the
- actual environment in question.
 \end_layout
 
 \end_body

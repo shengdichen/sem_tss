@@ -123,7 +123,7 @@ Synopsis
 \end_layout
 
 \begin_layout Standard
-This thesis applies the Primal-Wasserstein Imitation-Learning algorithm
+This thesis applies the Primal-Wasserstein Imitation-Learning (PW-IL) algorithm
  as introduced in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -132,7 +132,28 @@ literal "false"
 
 \end_inset
 
- to a testing-framework utilizing a separate testing-environment 
+ to a testing-framework utilizing a separate testing-environment referred
+ to as 
+\begin_inset Quotes xld
+\end_inset
+
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes xrd
+\end_inset
+
+.
+ Three hyper-parameters of PW-IL are configured independently to control
+ the quality and data availability of the input demonstration.
 \end_layout
 
 \begin_layout Subsection
@@ -140,8 +161,30 @@ Related Researches
 \end_layout
 
 \begin_layout Standard
-Key to the Primal-Wasserstein Imitation-Learning is the distance of its
- namesake, the Wasserstein distance, the 
+Methodologies from Reinforcement Learning (RL) have solved numerous difficult
+ tasks, with notable examples such as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dqn-nature,mastering-go,TD-gammon"
+literal "false"
+
+\end_inset
+
+.
+ Notable algorithms of RL include 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "A2C,dqn-nature,PPO"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Key to the particular algorithm PW-IL in question is the Wasserstein distance,
+ the 
 \begin_inset Formula $p^{\text{th}}$
 \end_inset
 
@@ -153,9 +196,18 @@ literal "false"
 
 \end_inset
 
+, in connection with the optimal transport problem originally coined by
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monge-memoire"
+literal "false"
+
+\end_inset
+
 .
- Generative Adversarial Networks (GANs) utilizing this distance is introduced
- in 
+ Generative Adversarial Networks (GANs) utilizing this distance, as referred
+ to the Wasserstein GANs (WGANs), are introduced in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "WGAN"
@@ -166,33 +218,8 @@ literal "false"
 .
 \end_layout
 
-\begin_layout Subsubsection
-On Reinforcement-Learning
-\end_layout
-
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Add sources
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-On other Learning methodologies
-\end_layout
-
-\begin_layout Standard
-Behavioral Cloning
-\end_layout
-
-\begin_layout Standard
-I
+Other branches of RL include 
 \end_layout
 
 \begin_layout Section
@@ -204,22 +231,18 @@ Programming
 \end_layout
 
 \begin_layout Standard
-The source-code is packaged in one monolithic repository, which includes
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-, as hinted at previously, 
-\end_layout
+The source-code is packaged in one monolithic repository, including the
+ testing-environment, statistical and visual analysis modules and an adapated
+ implementation of the PW-IL algorithm based on the original open-source
+ code published by the authors in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper-code"
+literal "false"
 
 \end_inset
 
- the testing-environment, training and testing modules for expert-
-\end_layout
-
-\begin_layout Subsubsection
-General usages
+.
 \end_layout
 
 \begin_layout Standard
@@ -283,10 +306,7 @@ literal "false"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-The source-code is consistently processed by the 
+ The source-code is consistently processed by the 
 \begin_inset Flex Code
 status open
 
@@ -317,10 +337,6 @@ PEP8
  standard.
 \end_layout
 
-\begin_layout Subsubsection
-Required packages
-\end_layout
-
 \begin_layout Standard
 The framework for the agent-interactive environment is provided by the 
 \begin_inset Flex Code
@@ -341,10 +357,7 @@ literal "false"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Implementation of the Proximal-Policy-Optimization (PPO) algorithm 
+ Implementation of the Proximal-Policy-Optimization (PPO) algorithm 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "PPO"
@@ -352,7 +365,7 @@ literal "false"
 
 \end_inset
 
- as provided by stable-baselines3 
+, as provided by stable-baselines3 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "sb3"
@@ -370,8 +383,7 @@ sb3
 
 \end_inset
 
-), is used as the direct RL algorithms.
- 
+), is used as the direct RL algorithm.
 \end_layout
 
 \begin_layout Subsection
@@ -409,11 +421,7 @@ Version-Tracking
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-The project source-code is distributed under the following repositories:
+The source-code of this project is distributed under the following repositories:
 \end_layout
 
 \begin_layout Itemize
@@ -476,34 +484,11 @@ literal "false"
 .
 \end_layout
 
-\begin_layout Plain Layout
-Both source-code repositories deploy the 
-\begin_inset Quotes xld
-\end_inset
-
-GNU Affero General Public License v3.0
-\begin_inset Quotes xrd
-\end_inset
-
- license, else known as 
-\begin_inset Flex Code
+\begin_layout Standard
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-GNU AGPLv3
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 This thesis documents the results obtained until version 
 \begin_inset Flex Code
 status open
@@ -535,6 +520,11 @@ status open
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
