@@ -3363,18 +3363,18 @@ PointNav
 \end_inset
 
 , symmetries within the environment and subsequently the (non-)optimal trajector
-ies are sometimes subtly exploited by PW-IL to provide superior agents,
- as seen in Remark 
+ies, as delineated in Remark 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "rem:Further-symmetry-discussions"
+reference "rem:Symmetry-heuristics-of-expert-pool"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- and Solution 
+, are sometimes subtly exploited by PW-IL to provide superior agents, as
+ seen in Solution 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "solu:discrete-distant"
@@ -3385,11 +3385,11 @@ noprefix "false"
 \end_inset
 
 .
- However, the advantages brought forward by the symmetry-heuristics is not
- consistently taken advantage of, as stated in Remark 
+ However, the advantages brought forward by the symmetry-heuristics are
+ not consistently taken advantage of, as observed in Remark 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "rem:Symmetry-heuristics-of-expert-pool"
+reference "rem:Further-symmetry-discussions"
 plural "false"
 caps "false"
 noprefix "false"
