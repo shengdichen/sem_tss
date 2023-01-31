@@ -303,10 +303,18 @@ status open
 
  is required
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Version requirement of 
+\begin_inset CommandInset href
+LatexCommand href
+name "Version requirement"
+target "https://docs.python.org/3/library/typing.html#module-contents"
+literal "false"
+
+\end_inset
+
+ of 
 \begin_inset Flex Code
 status open
 
@@ -327,14 +335,6 @@ typing
 \end_inset
 
 -Module: 
-\begin_inset CommandInset href
-LatexCommand href
-target "https://docs.python.org/3/library/typing.html#module-contents"
-literal "false"
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
