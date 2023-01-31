@@ -115,11 +115,3913 @@ todonotes
 \begin_body
 
 \begin_layout Section
-Sample Section
+Analysis
+\end_layout
+
+\begin_layout Subsection
+Evaluation Framework
 \end_layout
 
 \begin_layout Standard
-Here is some sample text.
+The following 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+a priori
+\end_layout
+
+\end_inset
+
+ performance-metrics are used to evaluate the performance of an agent interactin
+g with the testing-environment 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Performance metrics and baselines
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Performance-metrics-and-baselines"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The baseline is defined as reaching both targets before episode terminates,
+ i.e., the episode-length 
+\begin_inset Formula $m^{\text{Length}}\leq1000$
+\end_inset
+
+, where lower 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ values indicate less time required to attain the target positions, thus
+ better performance.
+ See Note 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "note:Episode-Length-of-PointNav"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for justifications of the baseline episode-length value of 
+\begin_inset Formula $1000$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Alternatively, the reward 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+ returned by the environment could be used to gauge the agent's performance.
+ However, as the reward of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+pointnav
+\end_layout
+
+\end_inset
+
+ is calculated as the negative 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ distance of the agent to the target (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:pointnav-reward"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), achieving higher reward value does not necessarily indicate actually
+ reaching the targets: an agent 
+\begin_inset Quotes xld
+\end_inset
+
+hovering
+\begin_inset Quotes xrd
+\end_inset
+
+ around the target in close proximity will effectively reduce the 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ distance close to 
+\begin_inset Formula $0$
+\end_inset
+
+, thus leading to high reward-values.
+ Thus, instead of a baseline, the reward 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+ constitutes a loose guideline for training efficacy.
+ Empirical observations suggest that a random agent displays reward-values
+ of approximately 
+\begin_inset Formula $\lessapprox-1.2\,\text{e}5$
+\end_inset
+
+, whereas signs of 
+\begin_inset Quotes xld
+\end_inset
+
+meaningful
+\begin_inset Quotes xrd
+\end_inset
+
+ training are found for values greater than 
+\begin_inset Formula $-7.0\,\text{e}4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: Performance Metrics"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ summarizes the value thresholds for different performance assessments of
+ an agent with respect to the two metrics nominated above.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="11">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Assessment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ep-Length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\quad$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reward 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Assessment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+insufficient
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $>1000$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<-1.2\,\text{e}5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+insufficient
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="70baselineskip%">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+baseline
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<1000$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $<-7.0\,\text{e}4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes xld
+\end_inset
+
+meaningful
+\begin_inset Quotes xrd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab: Performance Metrics"
+
+\end_inset
+
+The two performance measures for agents interacting with 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+: the episode-length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ sets the actual baseline, while the reward 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+ presents an unofficial metric for casual inspection of training effect.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the following sections, evaluations of an agent are performed on the
+ playback information of 
+\begin_inset Formula $10$
+\end_inset
+
+ episodes of interacting with the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ environment.
+\end_layout
+
+\begin_layout Subsection
+The experts
+\end_layout
+
+\begin_layout Standard
+Using the PPO-algorithm as introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PPO"
+literal "false"
+
+\end_inset
+
+ and implemented by the reference RL-library 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+sb3
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sb3"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $6$
+\end_inset
+
+ expert-agents are trained: 
+\begin_inset Formula $3$
+\end_inset
+
+ on the discrete-action 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ environment, 
+\begin_inset Formula $3$
+\end_inset
+
+ on the continuous counterpart.
+ It shall be noted that other algorithms from RL, such as A2C 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "A2C"
+literal "false"
+
+\end_inset
+
+ or DQN 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dqn-nature"
+literal "false"
+
+\end_inset
+
+ can be utilized without difficulty.
+\end_layout
+
+\begin_layout Standard
+The experts are trained with a largely sufficient step-count of 
+\begin_inset Formula $1$
+\end_inset
+
+ million.
+ After every 
+\begin_inset Formula $10$
+\end_inset
+
+ thousand steps, reward-evaluation on the respective, optionally shifted
+ 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ environment variant is performed.
+ The model yielding the best evaluation-reward respectively is saved as
+ the final, resultant agent when the training period has elapsed.
+\end_layout
+
+\begin_layout Subsubsection
+Evaluations
+\end_layout
+
+\begin_layout Standard
+Data generated by the final 
+\begin_inset Formula $6$
+\end_inset
+
+ expert agents is collected.
+ As described above, the average and the standard-deviation across 
+\begin_inset Formula $10$
+\end_inset
+
+ episodes with respect to the two performance-metrics 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ and 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+ are then calculated and enlisted in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: Performance of Experts"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="9">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Continuity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+-ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ep-Length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reward 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discrete
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $239.1\pm44.73$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.284\,\text{e}4\pm573.6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $257.8\pm22.86$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.427\,\text{e}4\pm526.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $406.1\pm75.37$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.918\,\text{e}4\pm2016$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Continuous
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $88.20\pm0.400$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5.221\,\text{e}3\pm329.3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $244.2\pm57.40$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.194\,\text{e}4\pm498.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $188.3\pm38.26$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-9.065\,\text{e}3\pm321.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab: Performance of Experts"
+
+\end_inset
+
+Performance of the experts with respect to the two metrics 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ (lower is better) and 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+ (higher is better), shown as 
+\begin_inset Formula $\left(\text{avg}\pm\sigma\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Analysis of Expert performance on 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Per the assessment criteria nominated in Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Performance-metrics-and-baselines"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the experts evidently solve the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ problem in all 
+\begin_inset Formula $3$
+\end_inset
+
+ configurations of both the discrete and the continuous version.
+\end_layout
+
+\begin_layout Standard
+Further more, despite being ultimately discretized through action-rounding,
+ the continuous 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ is solved more robustly than the discrete version.
+ One observes that, in particular, the Variation-2 of the discrete model
+ demonstrates high standard-deviation for episode-length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It is also evident that the respective experts solve the default variant
+ of both the continuous and discrete environment better than the shifted
+ ones.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Visualization of a 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ agent
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:expert-pointnav"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ provides various graphs for studying an agent interacting with 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+.
+ Here, the expert-agent of the continuous, Variation-
+\begin_inset Formula $0$
+\end_inset
+
+ 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ as seen in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: Performance of Experts"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is shown.
+\end_layout
+
+\begin_layout Itemize
+The two plots on the left demonstrate the agent's position across the 
+\begin_inset Formula $10$
+\end_inset
+
+ sampled episodes.
+ One observes near perfect performance of the Expert-agent, as hardly any
+ deviation is visible from the optimal, diagonal route.
+ The histogram also depicts the ideal, close to uniform distribution across
+ the trajectory, indicating little hovering around any particular location.
+\end_layout
+
+\begin_layout Itemize
+The upper-right plot provides the locations of the two targets as described
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+c-ref
+\end_layout
+
+\end_inset
+
+ previously.
+ The first target is unsurprisingly located at the non-shifted center of
+ 
+\begin_inset Formula $\left(100;100\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The lower-right plot delineates the agent's action.
+ One observes the high concentration around the maximal allowed value of
+ 
+\begin_inset Formula $2.5$
+\end_inset
+
+ for both dimensions, indicating fast movement in both directions across
+ the board.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The analysis shows desirable decision-making from this particular Expert-agent:
+ no wonder its 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+-value is near optimal (
+\begin_inset Formula $88.20$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /mnt/x/Dox/amperstand/eth/tss/sem/proj/tss/bin/plot/expert/plot.jpg
+	width 16.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:expert-pointnav"
+
+\end_inset
+
+Various visualization schemes of the Expert agent of the continuous default
+ 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\text{ID}=0$
+\end_inset
+
+.
+ Upper and lower left: direct-plot and histogram plot of the agent's position.
+ Upper right: positions of the two targets.
+ Lower right: distribution of the agent's action.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+General analysis strategy of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ agents
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The study of the Expert agents above extends towards the general procedure
+ of studying any model trained on the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+: with 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+the statistics of episode-length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ as baseline and the reward-value 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+ as auxiliary metric, one decides on the general assessment of success or
+ fail for the agent in question.
+\end_layout
+
+\begin_layout Standard
+Subsequently, the plotting utilities offer further insight to the real-time
+ playback of the expert with respect to the actual position of the agent
+ and the distribution of its actions.
+ 
+\end_layout
+
+\begin_layout Standard
+Both the stats and the plotting outputs are saved for all the Experts above
+ and the PW-IL agents introduced in the upcoming section:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub: Outputs of the Experts"
+target "https://github.com/shengdichen/sem_code/tree/main/src/ours/eval/pointenv/expert/demos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub: Outputs of PW-IL"
+target "https://github.com/shengdichen/sem_code/tree/main/src/ours/eval/pointenv/pwil/demos"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Results of PW-IL
+\end_layout
+
+\begin_layout Standard
+This section presents the result of agents trained with the PW-IL algorithm,
+ sorted by the optimality of the input expert-demonstrations.
+ Due to the elevated number of models trained, instead of the separate study
+ of individual models as seen in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: Performance of Experts"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:expert-pointnav"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the performance of multiple models are grouped together by hyper-parameter
+ choices for visual inspection.
+\end_layout
+
+\begin_layout Standard
+Note that all PW-IL agents are trained for 
+\begin_inset Formula $500$
+\end_inset
+
+ thousand steps with the same intermediate evaluation frequency of 
+\begin_inset Formula $10$
+\end_inset
+
+ thousand steps as for the six previously introduced Experts to select the
+ best performing model.
+\end_layout
+
+\begin_layout Subsection
+Optimal demonstrations
+\end_layout
+
+\begin_layout Standard
+To commence, the performance of the PW-IL agents with the 
+\begin_inset Quotes xld
+\end_inset
+
+optimal
+\begin_inset Quotes xrd
+\end_inset
+
+ pool are presented in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pwil-optimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, where the upper row shows the episode-length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+, whereas the lower the reward-values 
+\begin_inset Formula $m^{\text{Reward}}$
+\end_inset
+
+ as performance measure.
+ On the left, the discrete-action 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ is solved, and its continuous counterpart on the right.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /mnt/x/Dox/amperstand/eth/tss/sem/proj/tss/bin/plot/pwil/optimal/optimal_cropped.jpg
+	width 16.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pwil-optimal"
+
+\end_inset
+
+Performance of PW-IL with expert-pool 
+\begin_inset Formula $h^{\text{pool}}=0$
+\end_inset
+
+ (optimal demonstrations).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Analysis of PW-IL with optimal demonstration 
+\begin_inset Formula $h^{\text{pool}}=0$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:optimal"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+At first glance, one observes that for the majority of the 
+\begin_inset Formula $\left(h^{\text{\#-traj}},h^{\text{s-smp}}\right)$
+\end_inset
+
+ configurations, the baseline of
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ episode-length 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $m^{\text{Length}}\leq1000$
+\end_inset
+
+ is met, indicating successful solving of the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ environment.
+ Cases also abound where the expert performance is almost fully recovered.
+ One further draws the following conclusions for the discrete and the continuous
+ variants of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ respectively:
+\end_layout
+
+\begin_layout Standard
+For the discrete 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ environment, the couplings of 
+\begin_inset Formula $\left(h^{\text{\#-traj}},h^{\text{s-smp}}\right)=\left(1,10\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(5,20\right)$
+\end_inset
+
+ are the only two setups leading to unsatisfied baseline.
+ In particular, one observes from the upper-left plot that PW-IL agents
+ with a higher number of trajectories 
+\begin_inset Formula $h^{\text{\#-traj}}=10$
+\end_inset
+
+ (marked green) uniformly out-perform the agents with lower trajectories-count
+ 
+\begin_inset Formula $h^{\text{\#-traj}}=1$
+\end_inset
+
+ (marked blue), conforming to the expectation of the author of PW-IL in
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+.
+ However, for 
+\begin_inset Formula $h^{\text{\#-traj}}=5$
+\end_inset
+
+ (marked orange), the agents do not consistently out-perform or under-perform
+ the cases of 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $10$
+\end_inset
+
+, and at sub-sampling 
+\begin_inset Formula $h^{\text{s-smp}}=20$
+\end_inset
+
+, the corresponding agent does not even achieve the baseline.
+ For the sub-sampling frequency 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+, larger values degrade the performance of the case where 
+\begin_inset Formula $h^{\text{\#-traj}}=5$
+\end_inset
+
+, and appears to have little to even the opposite impact for the configurations
+ 
+\begin_inset Formula $h^{\text{\#-traj}}\in\left\{ 10,1\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the continuous counterpart, the highest trajectories-number 
+\begin_inset Formula $h^{\text{\#-traj}}=10$
+\end_inset
+
+ (marked green) displays high variance (upper-right plot): with three cases
+ of 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+ failing to meet the baseline.
+ One further concludes that, contrast to the continuous case, lower 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ values lead to better performance, where, with only one trajectory 
+\begin_inset Formula $h^{\text{\#-traj}}=1$
+\end_inset
+
+ (marked blue), the expert performance is completely recovered for 
+\begin_inset Formula $h^{\text{s-smp}}\leq5$
+\end_inset
+
+.
+ Concerning the sub-sampling parameter 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+, larger values lead to poorer performance for the stable 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ values of 
+\begin_inset Formula $1$
+\end_inset
+
+ (marked blue) and 
+\begin_inset Formula $5$
+\end_inset
+
+ (marked orange).
+ However, as stated previously, no immediate correlation is visible for
+ 
+\begin_inset Formula $h^{\text{\#-traj}}=10$
+\end_inset
+
+ due to high fluctuations.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Relationship between length and reward
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:optimal-length-and-reward"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Studying the lower-left reward-plot of the discrete environment, one observes
+ almost constant reward values for all three 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ values despite large fluctuations in the upper-left episode-length plot.
+ As discussed in Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Performance-metrics-and-baselines"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, this indicates extended hovering of the agent in close proximity to a
+ target without actually reach its position.
+ Despite not passing the baseline, these agents nevertheless demonstrate
+ positive training impact.
+\end_layout
+
+\begin_layout Standard
+On the other hand, the lower-right reward-plot of the continuous 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ is almost the mirror image of the plot of episode-length, proving low training
+ impact in the cases of unmet baseline.
+ Recalling from Definition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Performance-metrics-and-baselines"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ that a purely random agent displays 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+reward values of approximately 
+\begin_inset Formula $-1.2\,\text{e}5$
+\end_inset
+
+, one decides that 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+the agent configured with 
+\begin_inset Formula $\left(h^{\text{\#-traj}},h^{\text{s-smp}}\right)=\left(10,1\right)$
+\end_inset
+
+ barely displays any improvement over an random actor: surprising outcome,
+ as this configuration includes the most amount of trajectories with the
+ lowest frequency of sub-sampling, and thus, per heuristic reasoning of
+ the original authors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+, should possess the highest amount of replay information from the expert
+ and out-perform other configurations.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Non-optimal demonstrations
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:analysis-non-optimal-demo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the non-optimal trajectory-pools, i.e., 
+\begin_inset Formula $h^{\text{pool}}\in\left\{ 1,\cdots,6\right\} $
+\end_inset
+
+, only the graphs with respect to the metric episode-length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ are shown.
+ The interested reader is invited to inspect the parallel performance visualizat
+ions with the reward
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+-value as metric in the 
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub repository"
+target "https://github.com/shengdichen/sem_code/tree/main/src/ours/eval/pointenv/illustration"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+The discrete-action 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The episode-reward values 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ of the PW-IL agents trained on the discrete 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ environment are plotted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:non-optimal-pwil-discrete"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, where the pool-IDs 
+\begin_inset Formula $\left\{ 1,2,3\right\} $
+\end_inset
+
+ of the 
+\begin_inset Quotes xld
+\end_inset
+
+mixed
+\begin_inset Quotes xrd
+\end_inset
+
+ expert-pool are plotted on the left from top to bottom, and the IDs 
+\begin_inset Formula $\left\{ 4,5,6\right\} $
+\end_inset
+
+ of the 
+\begin_inset Quotes xld
+\end_inset
+
+distant
+\begin_inset Quotes xrd
+\end_inset
+
+ pool are depicted on the right.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /mnt/x/Dox/amperstand/eth/tss/sem/proj/tss/bin/plot/pwil/mixed_distant/mixed_distant_discrete_cropped.jpg
+	width 16.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:non-optimal-pwil-discrete"
+
+\end_inset
+
+Episode-length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ Performance of PW-IL on discrete 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ with non-optimal demonstration-pools.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Analysis of PW-IL agents on discrete 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ with 
+\begin_inset Quotes xld
+\end_inset
+
+mixed
+\begin_inset Quotes xrd
+\end_inset
+
+ expert-pools
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:discrete-mixed"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+It is evident that for the 
+\begin_inset Quotes xld
+\end_inset
+
+mixed
+\begin_inset Quotes xrd
+\end_inset
+
+ expert-pool, the configurations with 
+\begin_inset Formula $1$
+\end_inset
+
+ trajectory 
+\begin_inset Formula $h^{\text{\#-traj}}=1$
+\end_inset
+
+ (marked blue) consistently under-perform the cases of 
+\begin_inset Formula $h^{\text{\#-traj}}\in\left\{ 5,10\right\} $
+\end_inset
+
+, although for 
+\begin_inset Formula $h^{\text{pool}}\in\left\{ 1,2\right\} $
+\end_inset
+
+, the higher value 
+\begin_inset Formula $5$
+\end_inset
+
+ for 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ (marked orange) surprisingly out-performs the settings with 
+\begin_inset Formula $h^{\text{\#-traj}}=10$
+\end_inset
+
+ (marked green).
+ Also, considerable fluctuations are observed for these particular expert-pools
+ of ID 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ One concludes that for higher sub-sampling frequencies 
+\begin_inset Formula $h^{\text{s-smp}}\geq5$
+\end_inset
+
+, higher 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ values most likely exceed the performance of the case with only one trajectory
+ (
+\begin_inset Formula $h^{\text{\#-traj}}=1$
+\end_inset
+
+).
+ One shall also note that for the configurations of 
+\begin_inset Formula $\left(h^{\text{pool}},h^{\text{\#-traj}},h^{\text{s-smp}}\right)\in\left\{ \left(2,10,1\right),\left(2,5,5\right)\right\} $
+\end_inset
+
+, 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+super
+\end_layout
+
+\end_inset
+
+-expert performance is achieved.
+\end_layout
+
+\begin_layout Standard
+For the pool-ID 
+\begin_inset Formula $h^{\text{pool}}=3$
+\end_inset
+
+ (lower-left), disregarding the sub-sampling frequency of 
+\begin_inset Formula $h^{\text{s-smp}}=1$
+\end_inset
+
+, one discovers improvements in performance with higher values of trajectories-n
+umbers 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ and lower frequencies of sub-sampling 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+.
+ This observation aligns with the statements and the findings of the original
+ paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+, as larger 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ and smaller 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+ values both hint at richer expert-demonstration data for the PW-IL algorithm.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Analysis of the 
+\begin_inset Quotes xld
+\end_inset
+
+distant
+\begin_inset Quotes xrd
+\end_inset
+
+ pools and the symmetry-heuristics
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:discrete-distant"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For the distant expert-pool, the performance of the PW-IL agents appear
+ bleak at best.
+ Almost all models fail to achieve the baseline, with the rare exception
+ found in pool-ID 
+\begin_inset Formula $6$
+\end_inset
+
+.
+ Although this particular agent just about met the baseline requirement,
+ the symmetry-heuristics of pool-ID 
+\begin_inset Formula $6$
+\end_inset
+
+ in Remark 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rem:Symmetry-heuristics-of-expert-pool"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ might nevertheless be taken into account: In particular, one observes comparati
+vely better performance of agents for 
+\begin_inset Formula $h^{\text{pool}}=6$
+\end_inset
+
+ (heuristically symmetric) in relation to 
+\begin_inset Formula $4$
+\end_inset
+
+ and 
+\begin_inset Formula $5$
+\end_inset
+
+ (both heuristically asymmetric), as well as the stabler, less fluctuating
+ result of 
+\begin_inset Formula $h^{\text{pool}}=3$
+\end_inset
+
+ (symmetric), as discussed previously compared to the instances of 
+\begin_inset Formula $1$
+\end_inset
+
+ and 
+\begin_inset Formula $2$
+\end_inset
+
+ (both asymmetric).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+The continuous-action 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similar to the discrete counterpart, performance graphs of the PW-IL agents
+ trained on the continuous-action 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ are presented in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:non-optimal-pwil-continuous"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename /mnt/x/Dox/amperstand/eth/tss/sem/proj/tss/bin/plot/pwil/mixed_distant/mixed_distant_cont_cropped.jpg
+	width 16.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:non-optimal-pwil-continuous"
+
+\end_inset
+
+Episode-length 
+\begin_inset Formula $m^{\text{Length}}$
+\end_inset
+
+ performance of PW-IL on continuous 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ with non-optimal demonstration-pools.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Analysis of PW-IL agents on continuous 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ with 
+\begin_inset Quotes xld
+\end_inset
+
+mixed
+\begin_inset Quotes xrd
+\end_inset
+
+ expert-pools 
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:continuous-mixed"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+High variations are observed for PW-ILs agents with mixed expert-pools.
+ In particular, only the configuration of 
+\begin_inset Formula $\left(h^{\text{pool}},h^{\text{\#-traj}}\right)=\left(3,1\right)$
+\end_inset
+
+ (blue line of lower-left plot) meets the baseline 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ across all sub-sampling frequencies.
+\end_layout
+
+\begin_layout Standard
+However, despite the fluctuations, a substantial amount of the agents perform
+ reasonably well despite the non-optimal nature of the demonstrations.
+ In particular, one notes that the expert performance is fully recovered
+ in multiple instances.
+ Evidently, these high-performing agents are mostly trained with larger
+ trajectories-numbers 
+\begin_inset Formula $h^{\text{\#-traj}}\in\left\{ 5,10\right\} $
+\end_inset
+
+, conforming to the findings of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+Analysis of the 
+\begin_inset Quotes xld
+\end_inset
+
+distant
+\begin_inset Quotes xrd
+\end_inset
+
+ pools
+\begin_inset CommandInset label
+LatexCommand label
+name "solu:Continuous-distant"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+For higher 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Unlike the discrete case, where the distant pools lead to hardly any agents
+ meeting the baseline, the continuous 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ produces multiple successfully trained PW-IL models.
+ In particular, for 
+\begin_inset Formula $h^{\text{pool}}\in\left\{ 5,6\right\} $
+\end_inset
+
+ (bottom two graphs on the right) and trajectories-number 
+\begin_inset Formula $h^{\text{\#-traj}}=5$
+\end_inset
+
+ (marked orange), the baseline is met for every choice of sub-sampling frequency
+, and for all sub-sampling frequencies of the configurations 
+\begin_inset Formula $\left(h^{\text{pool}},h^{\text{\#-traj}}\right)=\left(6,10\right)$
+\end_inset
+
+ (green line in lower right plot), the trained agents manage to surpass
+ the baseline by a comfortable margin.
+\end_layout
+
+\begin_layout Standard
+The significance of this lies in the fact that the 
+\begin_inset Quotes xld
+\end_inset
+
+distant
+\begin_inset Quotes xrd
+\end_inset
+
+ pools (
+\begin_inset Formula $h^{\text{pool}}\in\left\{ 4,5,6\right\} $
+\end_inset
+
+) are defined as experts-trajectories on strictly non default environments
+ (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:seven-expert-pools"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ In other words, given completely skewed demonstrations for continuous 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+, the PW-IL algorithm still manages to recover the correct behavior for
+ the true, unshifted target environment.
+\end_layout
+
+\begin_layout Standard
+Similar training using suboptimal expert-demonstrations are presented in
+ researches of the Inverse Reinforcement-Learning (IRL) methodology such
+ as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "learning-learner,extrapolate-suboptimal"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Further symmetry discussions 
+\begin_inset CommandInset label
+LatexCommand label
+name "rem:Further-symmetry-discussions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+It shall be finally noted that the symmetry-heuristics in Remark 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rem:Symmetry-heuristics-of-expert-pool"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ no longer appears to fully apply in the continuous setting, as the agents
+ of Pool-ID 
+\begin_inset Formula $3$
+\end_inset
+
+ do not seem to collectively out-perform Pool-ID 
+\begin_inset Formula $2$
+\end_inset
+
+, nor does Pool-ID 
+\begin_inset Formula $6$
+\end_inset
+
+ consistently surpass ID 
+\begin_inset Formula $5$
+\end_inset
+
+.
+ Also, the symmetry is lost between Pool-ID 
+\begin_inset Formula $4$
+\end_inset
+
+ and 
+\begin_inset Formula $5$
+\end_inset
+
+, as the latter displays visibly better statistics.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Executive Summary
+\end_layout
+
+\begin_layout Standard
+From the previous analyses of PW-IL agents trained on both the discrete
+ and the continuous variants of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+, the final conclusions regarding the method itself and its various hyper-parame
+ter configurations are presented as follows:
+\end_layout
+
+\begin_layout Subsection
+The overview
+\end_layout
+
+\begin_layout Standard
+In general, the efficacy of the PW-IL algorithm is validated through this
+ study: with a wide range of reasonable configuration of its hyper-parameters,
+ the PW-IL agents manage to achieve the baseline requirements.
+ Furthermore, the expert performance could be fully recovered even if the
+ demonstration contains expert-trajectories of another variant of the actual
+ environment in question (see discussions 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:discrete-mixed"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:continuous-mixed"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ It is even possible to successfully train PW-IL agents even if the provided
+ demonstrations are completely generated by experts of a different, modified
+ environment (explained in Solution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:discrete-distant"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:Continuous-distant"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Predicting the best hyper-parameter configuration of PW-IL in an 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+a priori
+\end_layout
+
+\end_inset
+
+ manner is challenging.
+ As shown in Solution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:optimal-length-and-reward"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the theoretically optimal configuration of high trajectories-number 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ and low sub-sampling frequency 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+ with optimal demonstrations could still lead to unsuccessfully trained
+ agents.
+ Configurations for PW-IL is also highly environment-dependent: by simply
+ manipulating the continuity of the action-space of the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+ environment, one obtains vastly different training results and, in turn,
+ distinct optimal hyper-parameter values.
+ Therefore, for every specific usage instance of PW-IL, one shall perform
+ separate hyper-parameter search to configure the ideal number of trajectories
+ 
+\begin_inset Formula $h^{\text{\#-traj}}$
+\end_inset
+
+ and the sub-sampling frequency 
+\begin_inset Formula $h^{\text{s-smp}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, in the particular case of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+, symmetries within the environment and subsequently the (non-)optimal trajector
+ies are sometimes subtly exploited by PW-IL to provide superior agents,
+ as seen in Remark 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rem:Further-symmetry-discussions"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Solution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:discrete-distant"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ However, the advantages brought forward by the symmetry-heuristics is not
+ consistently taken advantage of, as stated in Remark 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rem:Symmetry-heuristics-of-expert-pool"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Unofficial guidelines for hyper-parameters choosing
+\end_layout
+
+\begin_layout Standard
+Despite the difficulties in soundly choosing PW-IL's hyper-parameters without
+ tuning, several trends have nonetheless emerged throughout the analysis
+ process:
+\end_layout
+
+\begin_layout Standard
+Of the three hyper-parameters investigated in this study, as introduced
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:three-hyper-parameters"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the quality of the expert-demonstration, as controlled by 
+\begin_inset Formula $h^{\text{pool}}$
+\end_inset
+
+ in this thesis, significantly impacts the resultant agent's performance.
+ Although non-optimal demonstrations might also lead to successful training
+ (see analysis 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:discrete-mixed"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:continuous-mixed"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:Continuous-distant"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), deploying high-quality demonstrations leads to dramatically improved
+ probability of meeting the baseline and further achieving excellent performance
+, as seen in Solution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:optimal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+From analyses in Solution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solu:discrete-mixed"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, one also concludes that higher expert trajectories-numbers generally lead
+ to better performance at larger sub-sampling values.
+ Given sufficiently high-quality expert-demonstrations, if the state-action
+ pairs of the expert-trajectories are known to exhibit non-trivial time-step
+ gaps in-between, one might consider compensating this by collecting more
+ trajectories.
+\end_layout
+
+\begin_layout Standard
+Ultimately, the ideal method of retrieving the optimal configurations for
+ PW-IL would rely on extensive tuning and parameter searches.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="6">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pool-ID 
+\begin_inset Formula $h^{\text{pool}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Expert-IDs in Pool
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Demo-Quality
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 0\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+optimal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 0,1\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+non-optimal: Mixed
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 0,2\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 0,1,2\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 1\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+non-optimal: distant
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 2\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\{ 1,2\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:best-configurations"
+
+\end_inset
+
+The best hyper-parameters configurations of every
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

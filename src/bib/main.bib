@@ -58,6 +58,9 @@ online{my_github_repo,
     },
 }
 
+# RL {{{
+# IRL {{{
+# main-paper {{{
 @misc{main-paper,
     doi = {10.48550/ARXIV.2006.04678},
     url = {https://arxiv.org/abs/2006.04678},
@@ -72,5 +75,378 @@ online{my_github_repo,
     title = {Primal Wasserstein Imitation Learning},
     publisher = {arXiv},
     year = {2020},
+    copyright = {arXiv.org perpetual, non-exclusive license},
+}
+
+@online{main-paper-code,
+    author = {
+        Dadashi, Robert and Hussenot, Léonard and Geist, Matthieu and Pietquin,
+        Olivier
+    },
+    title = {Primal Wasserstein Imitation Learning Source-Code Repository},
+    Year = {2020},
+    url = {
+        https://github.com/google-research/google-research/tree/master/pwil
+    },
+}
+# }}}
+
+# suboptimal irl {{{
+@misc{extrapolate-suboptimal,
+  doi = {10.48550/ARXIV.1904.06387},
+  url = {https://arxiv.org/abs/1904.06387},
+  author = {Brown, Daniel S. and Goo, Wonjoon and Nagarajan, Prabhat and
+      Niekum, Scott},
+  keywords = {Machine Learning (cs.LG), Machine Learning (stat.ML), FOS:
+      Computer and information sciences, FOS: Computer and information
+          sciences},
+  title = {Extrapolating Beyond Suboptimal Demonstrations via Inverse
+      Reinforcement Learning from Observations},
+  publisher = {arXiv},
+  year = {2019},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@inproceedings{learning-learner,
+  title = {Learning from a Learner},
+  author = {
+      Alexis Jacq and Matthieu Geist and Ana Paiva and Olivier Pietquin
+  },
+  booktitle = {International Conference on Machine Learning},
+  year = {2019}
+}
+# }}}
+
+# Wasserstein
+@misc{WGAN,
+  doi = {10.48550/ARXIV.1701.07875},
+  url = {https://arxiv.org/abs/1701.07875},
+  author = {Arjovsky, Martin and Chintala, Soumith and Bottou, Léon},
+  keywords = {
+      Machine Learning (stat.ML), Machine Learning (cs.LG), FOS: Computer and
+          information sciences, FOS: Computer and information sciences
+  },
+  title = {Wasserstein GAN},
+  publisher = {arXiv},
+  year = {2017},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+# AIRL
+@article{AIRL,
+    author    = {Justin Fu and
+                Katie Luo and
+                Sergey Levine},
+    title     = {Learning Robust Rewards with Adversarial Inverse Reinforcement Learning},
+    journal   = {CoRR},
+    volume    = {abs/1710.11248},
+    year      = {2017},
+    url       = {http://arxiv.org/abs/1710.11248},
+    eprinttype = {arXiv},
+    eprint    = {1710.11248},
+    timestamp = {Mon, 13 Aug 2018 16:46:29 +0200},
+    biburl    = {https://dblp.org/rec/journals/corr/abs-1710-11248.bib},
+    bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+# other IRL {{{
+@inproceedings{irl-russel,
+    title={Learning agents for uncertain environments (extended abstract)},
+    author={Stuart J. Russell},
+    booktitle={COLT' 98},
+    year={1998}
+}
+
+@inproceedings{irl-ng,
+    author = {Ng, Andrew Y. and Russell, Stuart J.},
+    title = {Algorithms for Inverse Reinforcement Learning},
+    year = {2000},
+    isbn = {1558607072},
+    publisher = {Morgan Kaufmann Publishers Inc.},
+    address = {San Francisco, CA, USA},
+    booktitle = {Proceedings of the Seventeenth International Conference on Machine Learning},
+    pages = {663–670},
+    numpages = {8},
+    series = {ICML '00}
+}
+# }}}
+# }}}
+
+# pure RL {{{
+# rl-theory {{{
+@article{rl-intro,
+    title = {Reinforcement Learning: An Introduction},
+    author = {Richard S. Sutton and Andrew G. Barto},
+    journal = {IEEE Transactions on Neural Networks},
+    year = {2005},
+    volume = {16},
+    pages = {285-286},
+}
+
+@book{bertsekas_1995,
+    author = {
+        Bertsekas, D. P.
+    },
+    year = {1995},
+    title = {
+        Dynamic programming and optimal control
+    },
+}
+
+@book{bellman_1957,
+    author = {
+        Bellman, Richard
+    },
+    title = {
+        Dynamic Programming
+    },
+    publisher = {
+        Princeton University Press
+    },
+    year = {1957},
+    address = {Princeton, NJ, USA},
+    edition = {1},
+}
+# }}}
+
+# rl-success {{{
+@article{TD-gammon,
+    title = {Temporal Difference Learning and TD-Gammon},
+    author = {Gerald Tesauro},
+    journal = {J. Int. Comput. Games Assoc.},
+    year = {1995},
+    volume = {18},
+    pages = {88}
+}
+
+@article{dqn-nature,
+    title = {Human-level control through deep reinforcement learning},
+    author = {Volodymyr Mnih and Koray Kavukcuoglu and David Silver and Andrei A.
+        Rusu and Joel Veness and Marc G. Bellemare and Alex Graves and Martin
+            A. Riedmiller and Andreas Fidjeland and Georg Ostrovski and Stig
+            Petersen and Charlie Beattie and Amir Sadik and Ioannis Antonoglou
+            and Helen King and Dharshan Kumaran and Daan Wierstra and Shane
+            Legg and Demis Hassabis},
+    journal = {Nature},
+    year = {2015},
+    volume = {518},
+    pages = {529-533}
+}
+
+@article{mastering-go,
+  title = {Mastering the game of Go without human knowledge},
+  author = {David Silver and Julian Schrittwieser and Karen Simonyan and
+      Ioannis Antonoglou and Aja Huang and Arthur Guez and Thomas Hubert and
+          Lucas baker and Matthew Lai and Adrian Bolton and Yutian Chen and
+          Timothy P. Lillicrap and Fan Hui and L. Sifre and George van den
+          Driessche and Thore Graepel and Demis Hassabis},
+  journal = {Nature},
+  year = {2017},
+  volume = {550},
+  pages = {354-359}
+}
+# }}}
+
+# rl-alg {{{
+@article{dqn-nature,
+    title = {Human-level control through deep reinforcement learning},
+    author = {Volodymyr Mnih and Koray Kavukcuoglu and David Silver and Andrei
+        A. Rusu and Joel Veness and Marc G. Bellemare and Alex Graves and
+            Martin A. Riedmiller and Andreas Fidjeland and Georg Ostrovski and
+            Stig Petersen and Charlie Beattie and Amir Sadik and Ioannis
+            Antonoglou and Helen King and Dharshan Kumaran and Daan Wierstra
+            and Shane Legg and Demis Hassabis},
+    journal = {Nature},
+    year = {2015},
+    volume = {518},
+    pages = {529-533}
+}
+
+@misc{PPO,
+    doi = {10.48550/ARXIV.1707.06347},
+    url = {https://arxiv.org/abs/1707.06347},
+    author = {Schulman, John and Wolski, Filip and Dhariwal, Prafulla and
+        Radford, Alec and Klimov, Oleg},
+    keywords = {Machine Learning (cs.LG), FOS: Computer and information sciences,
+        FOS: Computer and information sciences},
+    title = {Proximal Policy Optimization Algorithms},
+    publisher = {arXiv},
+    year = {2017},
+    copyright = {arXiv.org perpetual, non-exclusive license},
+}
+
+@article{A2C,
+    doi = {10.48550/ARXIV.1602.01783},
+    url = {https://arxiv.org/abs/1602.01783},
+    author = {
+        Mnih, Volodymyr and Badia, Adrià Puigdomènech and Mirza, Mehdi and
+            Graves, Alex and Lillicrap, Timothy P. and Harley, Tim and Silver,
+        David and Kavukcuoglu, Koray
+    },
+    keywords = {
+        Machine Learning (cs.LG), FOS: Computer and information sciences, FOS:
+            Computer and information sciences
+    },
+    title = {
+        Asynchronous Methods for Deep Reinforcement Learning
+    },
+    publisher = {arXiv},
+    year = {2016},
     copyright = {arXiv.org perpetual, non-exclusive license}
 }
+# }}}
+
+# rl-difficulty
+@misc{challenges-in-rl,
+    doi = {10.48550/ARXIV.1904.12901},
+    url = {https://arxiv.org/abs/1904.12901},
+    author = {Dulac-Arnold, Gabriel and Mankowitz, Daniel and Hester, Todd},
+    keywords = {Machine Learning (cs.LG), Artificial Intelligence (cs.AI),
+        Robotics (cs.RO), Machine Learning (stat.ML), FOS: Computer and
+            information sciences, FOS: Computer and information sciences},
+    title = {Challenges of Real-World Reinforcement Learning},
+    publisher = {arXiv},
+    year = {2019},
+    copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+# }}}
+
+# BC {{{
+@article{bc-pomerleau,
+    title={Efficient Training of Artificial Neural Networks for Autonomous Navigation},
+    author={Dean A. Pomerleau},
+    journal={Neural Computation},
+    year={1991},
+    volume={3},
+    pages={88-97}
+}
+
+@inproceedings{bc-bagnell,
+    author = {Bagnell, J. and Chestnutt, Joel and Bradley, David and Ratliff, Nathan},
+    booktitle = {Advances in Neural Information Processing Systems},
+    editor = {B. Sch\"{o}lkopf and J. Platt and T. Hoffman},
+    pages = {},
+    publisher = {MIT Press},
+    title = {Boosting Structured Prediction for Imitation Learning},
+    url = {https://proceedings.neurips.cc/paper/2006/file/fdbd31f2027f20378b1a80125fc862db-Paper.pdf},
+    volume = {19},
+    year = {2006}
+}
+
+@inproceedings{bc-Ross,
+    title={Efficient Reductions for Imitation Learning},
+    author={St{\'e}phane Ross and J. Andrew Bagnell},
+    booktitle={International Conference on Artificial Intelligence and Statistics},
+    year={2010}
+}
+# }}}
+
+# rl-code {{{
+@online{gym,
+    Author = {
+        Greg Brockman and Vicki Cheung and Ludwig Pettersson and Jonas
+            Schneider and John Schulman and Jie Tang and Wojciech Zaremba
+    },
+    Title = {OpenAI Gym},
+    Year = {2016},
+    Eprint = {arXiv:1606.01540},
+}
+
+@online{spinning-up,
+    Author = {OpenAI},
+    Title = {OpenAI Spinning Up in Deep RL},
+    Year = {2018},
+    Eprint = {arXiv:1606.01540},
+    howpublished = {
+        \url{https://spinningup.openai.com/en/latest/index.html}
+    },
+}
+
+@online{sb3,
+    author = {
+        Hill, Ashley and Raffin, Antonin and Ernestus, Maximilian and Gleave,
+        Adam and Kanervisto, Anssi and Traore, Rene and Dhariwal, Prafulla and
+            Hesse, Christopher and Klimov, Oleg and Nichol, Alex and Plappert,
+        Matthias and Radford, Alec and Schulman, John and Sidor, Szymon and Wu,
+        Yuhuai
+    },
+    year = {2018},
+    title = {
+        Stable Baselines
+    },
+    publisher = {GitHub},
+    journal = {
+        GitHub repository
+    },
+    howpublished = {
+        \url{https://github.com/hill-a/stable-baselines}
+    },
+}
+# }}}
+# }}}
+
+# transport {{{
+@book{opt-transport-villani,
+    author = {Villani, Cédric},
+    year = {2008},
+    month = {01},
+    pages = {xxii+973},
+    title = {Optimal transport -- Old and new},
+    volume = {338},
+    doi = {10.1007/978-3-540-71050-9}
+}
+
+@book{monge-memoire,
+    author = {Monge, Gaspard},
+    biburl = {
+        https://www.bibsonomy.org/bibtex/27501e977c23a6c608ed3d4cfc61f7141/becker
+    },
+    description = {
+        Mentioned by Filippo Simini, Marta C. González, Amos Maritan, and
+            Albert-László Barabási in "A universal model for mobility and
+            migration patterns" to mention the gravity model.
+    },
+    publisher = {De l'Imprimerie Royale},
+    title = {M{\'e}moire sur la th{\'e}orie des d{\'e}blais et des remblais},
+    year = 1781
+}
+
+@inproceedings{Kantorovich-mass-transport,
+    title = {On mass transportation},
+    author = {Leonid V. Kantorovich},
+    year = {2004}
+}
+
+@article{Kantorovich-problem-monge,
+    author = {Kantorovich, L.V.},
+    journal = {Journal of Mathematical Sciences (New York)},
+    language = {eng},
+    number = {1},
+    pages = {15-16},
+    publisher = {Springer},
+    title = {On a problem of Monge.},
+    url = {http://eudml.org/doc/223721},
+    volume = {133},
+    year = {2004},
+}
+# }}}
+
+# misc {{{
+@online{black,
+    Author = {
+        Carol Willing and Carl Meyer and Jelle Zijlstra and Mika Naylor and
+            Zsolt Dollenstein and Cooper Lees and Richard Si and Felix Hildén
+            and Batuhan Taskaya
+    },
+    Title = {
+        The uncompromising Python code formatter
+    },
+    Year = {2019},
+    howpublished = {
+        \url{https://github.com/psf/black}
+    },
+}
+# }}}
+
+vim: foldmethod=marker

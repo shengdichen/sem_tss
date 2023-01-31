@@ -115,11 +115,519 @@ todonotes
 \begin_body
 
 \begin_layout Section
-Sample Section
+Essentials of the PW-IL Algorithm
+\end_layout
+
+\begin_layout Subsection
+The RL problem
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:The-RL-problem"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Here is some sample text.
+The Markov-Decision-Process (MDP) framework as introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rl-intro"
+literal "false"
+
+\end_inset
+
+ characterizes agent-environment interaction over time-horizon 
+\begin_inset Formula $t\in T$
+\end_inset
+
+ with action 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ drawn from the time-invariant action-space 
+\begin_inset Formula $A$
+\end_inset
+
+ leading to state transition:
+\begin_inset Formula 
+\[
+S\in s_{t}\stackrel[\text{env}]{a_{t}}{\longrightarrow}s_{t+1}\in S
+\]
+
+\end_inset
+
+of the environment, yielding a reward 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+.
+ The decision for the action 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ of an agent is provided by policy 
+\begin_inset Formula $\pi$
+\end_inset
+
+ of policy-space 
+\begin_inset Formula $\Pi$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+s_{t}\stackrel{\pi}{\longrightarrow}a_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Central to Reinforcement-Learning (RL) is the search of the optimal policy
+ 
+\begin_inset Formula $\pi^{\star}$
+\end_inset
+
+ that maximizes the expected 
+\begin_inset Formula $\gamma$
+\end_inset
+
+-discounted summation of all rewards 
+\begin_inset Formula $r$
+\end_inset
+
+, otherwise referred to as the expected 
+\begin_inset Quotes xld
+\end_inset
+
+return
+\begin_inset Quotes xrd
+\end_inset
+
+ in reference literature such as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rl-intro,bellman_1957,bertsekas_1995"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The Wasserstein-distance
+\end_layout
+
+\begin_layout Subsubsection
+Definitions
+\end_layout
+
+\begin_layout Standard
+As studied in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "opt-transport-villani"
+literal "false"
+
+\end_inset
+
+, the 
+\begin_inset Formula $p^{\text{th}}$
+\end_inset
+
+-order Wasserstein-distance
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+named after Leonid Vaseršteĭn (in Russian: Леонид Нисонович Васерштейн)
+\end_layout
+
+\end_inset
+
+ of PW-IL's namesake with respect to metric-space 
+\begin_inset Formula $\left(M,d\right)$
+\end_inset
+
+ is defined as follows:
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}\mathcal{W}_{p} & \coloneqq\left(\underset{\theta\in\Theta\left(\mu,\nu\right)}{\inf}\left\{ \underset{\left(x,y\right)\sim\theta}{\mathbb{E}}\left[d^{p}\left(x,y\right)\right]\right\} \right)^{\nicefrac{1}{p}}\\
+ & \equiv\left(\underset{\theta\in\Theta}{\inf}\left\{ \mathop{\intop d^{p}\left(x,y\right)\text{d}\theta\left(x,y\right)}\right\} \right)^{\nicefrac{1}{p}}
+\end{alignedat}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu$
+\end_inset
+
+ are two (probability) measures on 
+\begin_inset Formula $\left(M,d\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $\theta\left(\cdot,\cdot\right)$
+\end_inset
+
+ denotes a coupling on 
+\begin_inset Formula $M\times M$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left\{ \begin{alignedat}{1}\mathop{\intop_{M}\theta\left(x,y\right)\text{d}y} & \equiv\mu\left(x\right)\\
+\intop_{M}\theta\left(x,y\right)\text{d}x & \equiv\nu\left(y\right)
+\end{alignedat}
+\right.
+\]
+
+\end_inset
+
+As a side-note, the Wasserstein-distance is known (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "opt-transport-villani"
+literal "false"
+
+\end_inset
+
+) to display connections with the optimal transport problem, originally
+ proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monge-memoire"
+literal "false"
+
+\end_inset
+
+ and further investigated and refined in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kantorovich-mass-transport,Kantorovich-problem-monge"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Application in RL
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:wasserstein-application-in-RL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ enumerates various desirable properties of the Wasserstein-distance: in
+ particular, it is a true distance (in contrast with 
+\begin_inset Formula $f$
+\end_inset
+
+-divergences used commonly in the settings of RL) with guaranteed smoothness.
+\end_layout
+
+\begin_layout Standard
+In the settings of the RL problem as defined in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-RL-problem"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the metric 
+\begin_inset Formula $d\left(\cdot,\cdot\right)$
+\end_inset
+
+ for the Wasserstein-distance is understood as:
+\begin_inset Formula 
+\[
+\left[\begin{alignedat}{1}S\\
+A
+\end{alignedat}
+\right]\times\left[\begin{alignedat}{1}S\\
+A
+\end{alignedat}
+\right]\:\;\stackrel{d\left(\cdot,\cdot\right)}{\longrightarrow}\;\;\mathbb{R}^{+}
+\]
+
+\end_inset
+
+The PW-IL algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ considers only the first-order Wasserstein-distance 
+\begin_inset Formula $p\equiv1$
+\end_inset
+
+ and imposes the restriction of distributions with only finite support.
+ With 
+\begin_inset Formula $D$
+\end_inset
+
+ state-action pairs as demonstration provided by some expert, the Wasserstein-di
+stance between policy 
+\begin_inset Formula $\pi$
+\end_inset
+
+ and the expert itself is found with:
+\begin_inset Formula 
+\[
+\mathcal{W}_{p\equiv1}\left(\pi,\text{expert}\right)\coloneqq\mathop{\inf_{\theta\in\Theta}}\mathop{\sum_{i\in\left[1;T\,\right]}}\mathop{\sum_{j\in\left[1;D\right]}}\left\{ d\left(\left[\begin{alignedat}{1}s_{i}^{\pi}\\
+a_{i}^{\pi}
+\end{alignedat}
+\right],\left[\begin{alignedat}{1}s_{j}^{\text{expert}}\\
+a_{j}^{\text{expert}}
+\end{alignedat}
+\right]\right)\theta\left(i,j\right)\right\} 
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $T$
+\end_inset
+
+ denotes the length of time-horizon as seen in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-RL-problem"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The Wasserstein-optimal policy follows naturally:
+\begin_inset Formula 
+\[
+\pi^{\star}\coloneqq\underset{\pi\in\Pi}{\inf}\left\{ \mathcal{W}\left(\pi,\text{expert}\right)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Detailed discussions on the expert-demonstrations are found later in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Demonstration-Setup"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The PW-IL algorithm
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ observes that solving for the optimal solution of the Wasserstein-distance
+ necessitates trajectory information of the entire episode, posing difficulties
+ for online learning tasks and environments of prolonged episodes.
+ This requirement is bypassed by the PW-IL algorithm in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+, where, instead of the optimal coupling 
+\begin_inset Formula $\theta^{\star}$
+\end_inset
+
+ (with respect to the true Wasserstein-distance), the following greedy coupling
+ 
+\begin_inset Formula $\theta^{\text{grd}}$
+\end_inset
+
+ is deployed:
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}\theta^{\text{grd}} & \coloneqq\underset{\theta\left[i,T\,\right]\in\Theta_{i}}{\arg\min}\mathop{\sum_{j\in\left[1;D\right]}}\end{alignedat}
+\left\{ d\left(\left[\begin{alignedat}{1}s_{i}^{\pi}\\
+a_{i}^{\pi}
+\end{alignedat}
+\right],\left[\begin{alignedat}{1}s_{j}^{\text{expert}}\\
+a_{j}^{\text{expert}}
+\end{alignedat}
+\right]\right)\theta\left(i,j\right)\right\} 
+\]
+
+\end_inset
+
+with the set 
+\begin_inset Formula $\Theta_{i}\coloneqq\left\{ \theta\left[i,T\,\right]\in\mathbb{R}^{D,+}\right\} $
+\end_inset
+
+ satisfying the constraints:
+\begin_inset Formula 
+\[
+\Theta_{i}\triangleq\left\{ \begin{alignedat}{1} & \sum_{j'\in\left[1;D\right]}\theta\left(i,j'\right)=\frac{1}{T}\\
+ & \forall k\in\left[1;D\right],\;\sum_{i'\in\left[1;i-1\right]}\left\{ \theta^{\text{grd}}\left(i',k\right)+\theta\left(i,k\right)\right\} \leq\frac{1}{T}
+\end{alignedat}
+\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ further shows that the greedy-coupling is non-optimal and thus by-definition
+ serves as an upper-bound for the true Wasserstein-distance.
+ Using the greedy coupling 
+\begin_inset Formula $\theta^{\text{grd}}$
+\end_inset
+
+ instead of attempting to find the optimal 
+\begin_inset Formula $\theta^{\star}$
+\end_inset
+
+, the PW-IL algorithm thus computes its reward in an 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+offline
+\end_layout
+
+\end_inset
+
+ manner, without re-evaluation throughout the agent's interaction with the
+ underlying environment.
+ The minimizer with this greedy-coupling 
+\begin_inset Formula $\theta^{\text{grd}}$
+\end_inset
+
+ is finally used to calculate the per-time-step reward:
+\begin_inset Formula 
+\[
+r_{i}^{\texttt{PW-IL}}\coloneqq f\left(\mathop{\sum_{j\in\left[1;D\right]}}\left\{ d\left(\left[\begin{alignedat}{1}s_{i}^{\pi}\\
+a_{i}^{\pi}
+\end{alignedat}
+\right],\left[\begin{alignedat}{1}s_{j}^{\text{expert}}\\
+a_{j}^{\text{expert}}
+\end{alignedat}
+\right]\right)\theta^{\text{grd}}\left(i,j\right)\right\} \right)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $f$
+\end_inset
+
+ chosen as:
+\begin_inset Formula 
+\[
+f\left(c\right)\coloneqq5\:\exp\left(-\frac{5T}{\left(\left|S\right|+\left|A\right|\right)^{\nicefrac{1}{2}}}\,c\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Further details
+\end_layout
+
+\begin_layout Standard
+Per 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+, the complexity of computing the reward-value after one time-step is 
+\begin_inset Formula $\mathcal{O}\left(\left(\left|S\right|+\left|A\right|\right)D+\nicefrac{D^{2}}{T}\right)$
+\end_inset
+
+.
+ Thus, the total runtime estimate across the entire time-horizon of 
+\begin_inset Formula $T$
+\end_inset
+
+ steps as:
+\begin_inset Formula 
+\[
+\mathcal{O}\left(\left(\left|S\right|+\left|A\right|\right)DT+D^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The interested reader shall inspect the original paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ for further derivation details and (non-)optimality discussions with respect
+ to the greedy coupling and the resultant PW-IL algorithm.
 \end_layout
 
 \end_body

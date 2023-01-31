@@ -115,11 +115,427 @@ todonotes
 \begin_body
 
 \begin_layout Section
-Sample Section
+Quick-Start
+\end_layout
+
+\begin_layout Subsection
+Synopsis
 \end_layout
 
 \begin_layout Standard
-Here is some sample text.
+This thesis applies the Primal-Wasserstein Imitation-Learning (PW-IL) algorithm
+ as introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ to a testing-framework utilizing a separate testing-environment referred
+ to as 
+\begin_inset Quotes xld
+\end_inset
+
+
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PointNav
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes xrd
+\end_inset
+
+.
+ Three hyper-parameters of PW-IL are configured independently to control
+ the quality and data availability of the input demonstration.
+\end_layout
+
+\begin_layout Subsection
+Related Researches
+\end_layout
+
+\begin_layout Standard
+Methodologies from Reinforcement Learning (RL) have solved numerous difficult
+ tasks, with notable examples such as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dqn-nature,mastering-go,TD-gammon"
+literal "false"
+
+\end_inset
+
+.
+ Representative algorithms of RL include 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "A2C,dqn-nature,PPO"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Key to the PW-IL algorithm in question is the Wasserstein distance, the
+ 
+\begin_inset Formula $p^{\text{th}}$
+\end_inset
+
+-order generalization of which is studied in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "opt-transport-villani"
+literal "false"
+
+\end_inset
+
+, displaying connections with the optimal transport problem originally coined
+ by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monge-memoire"
+literal "false"
+
+\end_inset
+
+ and expanded upon by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kantorovich-mass-transport,Kantorovich-problem-monge"
+literal "false"
+
+\end_inset
+
+.
+ Generative Adversarial Networks (GANs) utilizing this distance, as referred
+ to the Wasserstein GANs (WGANs), are introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WGAN"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "extrapolate-suboptimal,learning-learner"
+literal "false"
+
+\end_inset
+
+ study RL training scenarios performed with non-optimal demonstrations.
+ Other Inverse Reinforcement Learning (IRL) methods are found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "irl-russel,irl-ng"
+literal "false"
+
+\end_inset
+
+.
+ Methodologies of the Behavioral Cloning (BC) paradigm are presented in
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bc-bagnell,bc-pomerleau,bc-Ross"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Technical Details
+\end_layout
+
+\begin_layout Subsection
+Programming
+\end_layout
+
+\begin_layout Standard
+The source-code is packaged in one monolithic repository, including the
+ testing-environment, statistical and visual analysis modules and an adapated
+ implementation of the PW-IL algorithm based on the original open-source
+ code published by the authors in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper-code"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The programming is performed with the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Python
+\end_layout
+
+\end_inset
+
+ language with global type-hinting.
+ Python versions no earlier than 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+3.9
+\end_layout
+
+\end_inset
+
+ is required
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Version requirement"
+target "https://docs.python.org/3/library/typing.html#module-contents"
+literal "false"
+
+\end_inset
+
+ of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Python
+\end_layout
+
+\end_inset
+
+'s 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+typing
+\end_layout
+
+\end_inset
+
+-Module: 
+\end_layout
+
+\end_inset
+
+.
+ The source-code is consistently processed by the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+black
+\end_layout
+
+\end_inset
+
+-formatter 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "black"
+literal "false"
+
+\end_inset
+
+ and thus implicitly conforms to the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+PEP8
+\end_layout
+
+\end_inset
+
+ standard.
+\end_layout
+
+\begin_layout Standard
+The framework for the agent-interactive environment is provided by the 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+gym
+\end_layout
+
+\end_inset
+
+-package developed by OpenAI 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gym"
+literal "false"
+
+\end_inset
+
+.
+ Implementation of the Proximal-Policy-Optimization (PPO) algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PPO"
+literal "false"
+
+\end_inset
+
+, as provided by stable-baselines3 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sb3"
+literal "false"
+
+\end_inset
+
+ (
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+sb3
+\end_layout
+
+\end_inset
+
+), is used as the direct RL algorithm.
+\end_layout
+
+\begin_layout Subsection
+Formatting and Typesetting
+\end_layout
+
+\begin_layout Standard
+This paper is compiled by the Lua\SpecialChar TeX
+ typesetting-engine featuring the open-source
+ font-packages 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Libertinus
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Source-Code-Pro
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Version-Tracking
+\end_layout
+
+\begin_layout Standard
+The source-code of this project is distributed under the following repositories:
+\end_layout
+
+\begin_layout Itemize
+The main repository contains all code necessary for inspecting and reproducing
+ the training and testing results of this study and is published under:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "GitLab [ETH-Domain]"
+target "https://gitlab.ethz.ch/shenchen/sem_code/"
+literal "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub"
+target "https://github.com/shengdichen/sem_code"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+This thesis-document is accessible under: 
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub"
+target "https://github.com/shengdichen/sem_tss/blob/main/src/main.pdf"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This thesis documents the results obtained until version 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+V?
+\end_layout
+
+\end_inset
+
+, marked with the signed 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+git-tag
+\end_layout
+
+\end_inset
+
+ of 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+#tag-number
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

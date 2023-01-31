@@ -114,12 +114,513 @@ todonotes
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+This project studies the performance of the Primal Wasserstein IL as introduced
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "main-paper"
+literal "false"
+
+\end_inset
+
+ under varying conditions of
+\end_layout
+
+\begin_layout Enumerate
+Quality of demonstrations by expert;
+\end_layout
+
+\begin_layout Enumerate
+Number of demonstrations available to the algorithm
+\end_layout
+
+\begin_layout Enumerate
+Sample scarcity with sub-sampling frequency
+\end_layout
+
+\begin_layout Plain Layout
+To this end, a testing-framework targeted at varying these essential configurati
+ons is created.
+ A 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-Sample Section
+Review and Projection
+\end_layout
+
+\begin_layout Subsection
+Timeline
 \end_layout
 
 \begin_layout Standard
-Here is some sample text.
+The administrative details of this thesis can be retrieved under the course-cata
+logue of ETH Zürich under the registration number 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+401-3740-01L
+\end_layout
+
+\end_inset
+
+.
+ Its total duration is estimated at approximately 
+\begin_inset Formula $5$
+\end_inset
+
+ weeks of full-time work, including the drafting of the thesis and the composing
+ of the source-code.
+ Specifics are found in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Time-stamps-of-key-activities"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="5">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Activities
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\qquad$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Duration (
+\begin_inset Formula $\times$
+\end_inset
+
+weeks)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+literature survey; project structuring
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+testing of relevant source-code and algorithm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+development of testing framework
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+source-code refactoring; expansion of testing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+collection of results; composition of thesis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Time-stamps-of-key-activities"
+
+\end_inset
+
+Time-stamps of key activities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Future work
+\end_layout
+
+\begin_layout Standard
+Some immediate prospects for further researches include, but are not limited
+ to:
+\end_layout
+
+\begin_layout Itemize
+Expansion of the evaluation framework to include other testing-environments
+ such as the classic control-problems of the Cartpole and the Pendulum 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gym"
+literal "false"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Extension of the PW-IL algorithm with adaptive regularization and parameter
+ tuning;
+\end_layout
+
+\begin_layout Itemize
+Comparison of the PW-IL algorithm with other state-of-the-art algorithms,
+ in particular, IRL methods such as Adversarial Inverse Reinforcement Learning
+ (AIRL) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AIRL"
+literal "false"
+
+\end_inset
+
+ to investigate sample-efficiency and solution robustness.
+\end_layout
+
+\begin_layout Standard
+The list is definitely non-exhaustive: the reader is encouraged to continue
+ upon the findings of this thesis to explore follow-up possibilities building
+ upon this powerful algorithm.
+\end_layout
+
+\begin_layout Section
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+To the supervisor of this thesis, Prof.
+ Dr.
+ J.
+ Buhmann: my deepest appreciation for the encouragement of pursuing research
+ of this project and for the inspiring and philosophical approach to the
+ realm of machine-learning as a whole;
+\begin_inset VSpace 50baselineskip%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To my advisor, Ivan: my heart-felt thanks for patiently and gently introducing
+ me to the fascinating algorithm of PW-IL, for guiding me with expert knowledge
+ in the field and for providing me with countless constructive suggestions
+ and hours of extended exchange sessions; 
+\begin_inset VSpace 50baselineskip%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, to my family and my friends: my sincere gratitude for the unyielding
+ support and care during the course of my studies.
 \end_layout
 
 \end_body
