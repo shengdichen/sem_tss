@@ -3001,7 +3001,7 @@ noprefix "false"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Summary of hyper-parameters
 \begin_inset CommandInset label
 LatexCommand label
