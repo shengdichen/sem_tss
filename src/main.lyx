@@ -123,11 +123,11 @@ todonotes
 \begin_body
 
 \begin_layout Title
-Sample
+A Study of Primal Wasserstein Imitation-Learning
 \begin_inset Newline newline
 \end_inset
 
-Essay
+in Goal-Conditioned RL
 \end_layout
 
 \begin_layout Author
@@ -217,7 +217,17 @@ ch | 17-943-358
 \end_layout
 
 \begin_layout Abstract
-This is the sample summary.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This thesis explores the correlation between various configurations of the
+ Primal Wasserstein Imitation-Learning.
+\end_layout
+
+\end_inset
+
+
 \begin_inset VSpace 150baselineskip%
 \end_inset
 
@@ -225,7 +235,22 @@ This is the sample summary.
 \end_layout
 
 \begin_layout Abstract
-Here is more text.
+This project, conducted under the supervision of Prof.
+ Dr.
+ J.
+ Buhmann and I.
+ Ovinnikov, is executed within the framework of a Semester-Thesis under
+ the catalogue identifier 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+401-3990-18L
+\end_layout
+
+\end_inset
+
+ at ETH Zürich.
 \end_layout
 
 \begin_layout Standard
@@ -267,12 +292,12 @@ status open
 \end_layout
 
 \begin_layout Center Header
-Sample Essay
+A Study of Primal Wasserstein Imitation-Learning 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Sample Essay
+A Study of Primal Wasserstein Imitation-Learning
 \end_layout
 
 \end_inset
